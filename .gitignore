@@ -128,4 +128,4 @@ dmypy.json
 # Pyre type checker
 .pyre/
 /.idea/
-/data-analysis/_build/
+/data-science/_build/

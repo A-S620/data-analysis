@@ -3,8 +3,10 @@
 
 format: jb-book
 root: intro
-chapters:
-- file: DescriptiveAnalysis
-- file: Histograms
-- file: SimpleLinearRegression
-- file: MultipleLinearRegression
+parts:
+- caption: Data Analysis
+  chapters:
+  - file: DataAnalysis/DescriptiveAnalysis
+  - file: DataAnalysis/Histograms
+  - file: DataAnalysis/SimpleLinearRegression
+  - file: DataAnalysis/MultipleLinearRegression

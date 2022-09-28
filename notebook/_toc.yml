@@ -10,3 +10,6 @@ parts:
   - file: DataAnalysis/Histograms
   - file: DataAnalysis/SimpleLinearRegression
   - file: DataAnalysis/MultipleLinearRegression
+- caption: Python Basics
+  chapters:
+    - file: PythonBasics/PythonBasics

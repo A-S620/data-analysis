@@ -1,0 +1,589 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Web Scrapper &#8212; Data Science</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="Reading Images" href="../ReadImages/ReadImages.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/320_002.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Data Science</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Hello
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Data Analysis
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../DataAnalysis/DescriptiveAnalysis.html">
+   Descriptive Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../DataAnalysis/Histograms.html">
+   Histograms
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../DataAnalysis/SimpleLinearRegression.html">
+   Simple Linear Regression
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../DataAnalysis/MultipleLinearRegression.html">
+   Multiple Linear Regression
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Python Being Cool
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../PythonBasics/PythonBasics.html">
+   Python Basics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ReadImages/ReadImages.html">
+   Reading Images
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Web Scrapper
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/A-S620/data-science/main?urlpath=tree/data-science/PythonBeingCool/WebScrapper/WebScrapper.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/A-S620/data-science"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/A-S620/data-science/issues/new?title=Issue%20on%20page%20%2FPythonBeingCool/WebScrapper/WebScrapper.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../_sources/PythonBeingCool/WebScrapper/WebScrapper.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Web Scrapper</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="web-scrapper">
+<h1>Web Scrapper<a class="headerlink" href="#web-scrapper" title="Permalink to this headline">#</a></h1>
+<p>This code uses the library <strong>Beautiful Soup</strong>
+It makes a GET request to Wikipedia with a keyword.
+The HTML is parsed for text and printed.</p>
+<p>The code below takes in a keyword to search up on Wikipedia, for example: <code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">Webscrapper.py</span> <span class="pre">BTS</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
+
+<span class="n">res</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;https://en.wikipedia.org/wiki/&#39;</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">:]))</span>
+<span class="n">res</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
+<span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="s1">&#39;html.parser&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">soup</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="o">.</span><span class="n">getText</span><span class="p">())</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
+
+<span class="n">res</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;https://en.wikipedia.org/wiki/&#39;</span> <span class="o">+</span> <span class="s1">&#39;BTS&#39;</span><span class="p">)</span>
+<span class="n">res</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
+<span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="s1">&#39;html.parser&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">soup</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="o">.</span><span class="n">getText</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>BTS (Korean: 방탄소년단; RR: Bangtan Sonyeondan), also known as the Bangtan Boys, is a South Korean boy band formed in 2010 and debuting in 2013 under Big Hit Entertainment. The septet—consisting of members Jin, Suga, J-Hope, RM, Jimin, V, and Jungkook—co-writes and co-produces much of their own material. Originally a hip hop group, their musical style has evolved to incorporate a wide range of genres; their lyrics have often discussed mental health, the troubles of school-age youth and coming of age, loss, the journey towards self-love, and individualism. Their work also frequently references literature, philosophy and psychological concepts, and includes an alternate universe storyline.
+
+After launching in 2013 with their single album 2 Cool 4 Skool, BTS respectively released their first Korean-language studio album, Dark &amp; Wild, and Japanese-language studio album, Wake Up, in 2014. The group&#39;s second Korean studio album, Wings (2016), was their first to sell one million copies in South Korea. By 2017, BTS had crossed into the global music market, leading the Korean wave into the United States and breaking several sales records. They became the first Korean ensemble to receive a  Gold certification from the Recording Industry Association of America (RIAA) for their single &quot;Mic Drop&quot;, as well as the first act from South Korea to top the Billboard 200 with their studio album Love Yourself: Tear (2018). BTS became one of the few groups since the Beatles in 1966–1968 with four US number-one albums in less than two years, and Love Yourself: Answer (2018) was the first Korean album certified Platinum by the RIAA. In 2020, BTS became the first all-South Korean act to reach number one on the Billboard Hot 100 and Billboard Global 200 with their Grammy-nominated single &quot;Dynamite&quot;. Their follow-up releases &quot;Savage Love&quot;, &quot;Life Goes On&quot;, &quot;Butter&quot;, and &quot;Permission to Dance&quot; made them the quickest act to earn four US number-one singles since Justin Timberlake in 2006. 
+
+As of 2022, BTS is the best-selling artist in South Korean history, having sold in excess of 30 million albums via the Circle Chart, and their studio album Map of the Soul: 7 (2020) is the best-selling album of all time in South Korea. They are the first non-English-speaking and Asian act to hold sold-out concerts at Wembley Stadium and the Rose Bowl (Love Yourself World Tour in 2019), and were named the International Federation of the Phonographic Industry&#39;s (IFPI) Global Recording Artist of the Year for both 2020 and 2021. The group&#39;s many accolades include multiple American Music Awards, Billboard Music Awards, Golden Disc Awards, and nominations for two Grammy Awards. In 2017, they partnered with UNICEF to establish the Love Myself anti-violence campaign, going on to address three sessions of the United Nations General Assembly. Featured on Time&#39;s international cover as &quot;Next Generation Leaders&quot; and dubbed the &quot;Princes of Pop&quot;, BTS has also appeared on Time&#39;s lists of the 25 most influential people on the internet (2017–2019) and the 100 most influential people in the world (2019), and in 2018 became the youngest recipients of the Order of Cultural Merit from the President of South Korea for their contributions in spreading Korean culture and language.
+
+The septet&#39;s name, BTS, stands for the Korean phrase Bangtan Sonyeondan (Korean: 방탄소년단; Hanja: 防彈少年團), literally meaning &quot;Bulletproof Boy Scouts&quot;. According to member J-Hope, the name signifies the group&#39;s desire &quot;to block out stereotypes, criticisms, and expectations that aim on adolescents like bullets&quot;.[2][3] In Japan, they are known as Bōdan Shōnendan (防弾少年団).[4] In July 2017, BTS announced that their name would also stand for &quot;Beyond the Scene&quot; as part of their new brand identity.[5] This extended their name to evoke those who grow up &quot;from the boy to an adult who opens the doors that is facing to go forward&quot;.[6]
+
+BTS was formed in 2010, after Big Hit Entertainment CEO Bang Si-hyuk wanted to form a hip hop group around RM (Kim Namjoon), an underground rapper who was well known on the music scene in Seoul. BTS was originally supposed to be a hip hop group, but, seeing falling album sales, he changed his plans, thinking a different path would be more marketable. He chose to vary from the usual, highly regimented idol groups and create one where the members would be individuals rather than an ensemble, and free to express themselves.[7][8] Auditions were held in 2010 with plans to original plans to launch the following year.[9][10] The band members lived together, practicing up to 15 hours a day, and first performed before a small crowd of industry insiders in 2013.[11]
+
+We started to tell the stories that people wanted to hear and were ready to hear, stories that other people could not or would not tell. We said what other people were feeling—like pain, anxieties and worries. That was our goal, to create this empathy that people can relate to.
+
+ —Suga[12]
+
+BTS&#39; representation by Big Hit, rather than one of the three agencies that dominated K-pop at the time, allowed the individual members leeway to express their individuality and allowed them to have input into the music.[13] On June 12, 2013, BTS released their debut single album 2 Cool 4 Skool, along with the lead single &quot;No More Dream&quot;, neither of which sold particularly well at the time.[14] Nevertheless, according to Kathy Sprinkel in her book on BTS, that single was &quot;spotlighting young people&#39;s anxiety in the face of lofty parental expectations, sent shock waves through the K-pop ranks. Here was a musical act that wasn&#39;t pulling any punches. More specifically, they had a point of view, and they weren&#39;t afraid to take on topics that are considered taboo in South Korean society and elsewhere.&quot;[15] The album reached the top five on South Korea&#39;s Gaon Music Chart.[16] In 2 Cool 4 Skool, BTS employed an old-school hip-hop sound from the 1990s.[17][18] The album&#39;s release was followed by appearances on Korean music shows, which caught the attention of reviewers and viewers.[19][20]
+
+In September 2013, BTS released the second entry in their &quot;school trilogy&quot;: the EP, O!RUL8,2?. The album was released alongside the single &quot;N.O.&quot;[21][22] Similarly to 2 Cool 4 Skool, the new release had a theme of students feeling under pressure and needing to sacrifice their dreams and aspirations.[21] According to scholar Kyung Hyun Kim, many of BTS&#39; earlier works such as &quot;N.O.&quot; and &quot;No More Dreams&quot; were &quot;expressions of rebellion against the establishment that tapped into Korean teenagers&#39; frustrations with the country&#39;s educational system&quot; and, he stated, helped them build a fan base among young people in North America and Europe.[23] That same month, BTS starred in their own variety show, SBS MTV&#39;s Rookie King Channel Bangtan, in which members parodied variety shows such as VJ Special Forces and MasterChef Korea.[24] At the end of the year, BTS was recognized with several New Artist of the Year awards in South Korea.[25][26][27]
+
+The last entry in BTS &quot;school trilogy&quot;, the Skool Luv Affair EP, was released in February 2014.[28][29] The release topped the Gaon Album Chart,[30] and appeared on Billboard&#39;s World Albums Chart for the first time, peaking at number three.[28][31] The EP was supported by two singles: &quot;Boy in Luv&quot; and &quot;Just One Day&quot;.[32] Following Skool Luv Affair&#39;s release, BTS played at their first fan meeting in Seoul, selecting the name A.R.M.Y. for the fan club.[33] In July 2014, BTS hosted a concert in West Hollywood, their first show in the United States,[34] and in August, they appeared at KCON in Los Angeles.[35]
+
+In August 2014, BTS released the album Dark &amp; Wild, which reached number two in South Korea.[32][36] It was supported by two singles: &quot;Danger&quot; and &quot;War of Hormone&quot;.[32] The group embarked on their first concert tour, 2014 BTS Live Trilogy Episode II: The Red Bullet, which lasted from October to December 2014.[37] The band launched their first Japanese studio album, Wake Up, in December 2014; the release peaked at number three on the Oricon Albums Chart.[38] After the album&#39;s release, BTS held their 1st Japan Tour 2015 Wake Up: Open Your Eyes in February 2015.[39] The Red Bullet Tour that had begun on October 17, 2014 in South Korea was resumed on June 6, 2015 in Malaysia and toured Australia, North America and Latin America before ending in Hong Kong that August. In all, the entire tour attracted 80,000 spectators at 18 cities in 13 countries.[37][40]
+
+BTS experimented with other styles of music besides hip hop in The Most Beautiful Moment in Life, Part 1, released in 2015.[32][41] BTS wanted to express the beauty and anxiousness of youth and settled on the title of &quot;花樣年華&quot; (Korean: 화양연화; RR: Hwayangyeonhwa), loosely interpreted to define &quot;youth&quot; metaphorically as &quot;the most beautiful moment in life&quot;.[42] The album served as an introduction to their youth trilogy, a triptych of albums dedicated to the struggles of young people.[43] The single &quot;I Need U&quot; was a top-five hit in South Korea and garnered the group a win on SBS MTV&#39;s The Show.[44][45] The second single &quot;Dope (Korean: 쩔어; RR: Jjeoreo)&quot; reached number three on Billboard&#39;s World Digital Songs Sales Chart and its music video was viewed over 100 million times on YouTube.[46][47] The group began the world tour extension of their Red Bullet Tour in June, titled 2015 Live Trilogy Episode II: The Red Bullet, visiting cities throughout Asia, Oceania, North America, and Latin America.[37] &quot;For You&quot;, in Japanese, was released together with Japanese versions of &quot;War of Hormone&quot; and &quot;Let Me Know&quot; on June 17, 2015, and immediately topped Oricon&#39;s daily chart.[32][48]
+
+In November, BTS commenced their third concert tour, 2015 BTS LIVE &quot;The Most Beautiful Moment in Life: On Stage&quot;, which began with three sold-out shows in Seoul, and was extended to Japan.[49] Thematically, the EP focused more on the serious and speculative aspects of youth, touching on the pursuit of success, loneliness, affection for their origins, and the suffering of the younger generation due to unfavorable conditions in current society.[50] The album topped the weekly Gaon Album and Billboard World Albums charts.[51][52] It also marked their first appearance on the Billboard 200 chart,[53] making it for one week at number 171,[54] and eight of the tracks appeared on Billboard&#39;s World Digital Songs Sales Chart.[55]
+
+Their compilation album and the finale to their &quot;youth trilogy&quot;, The Most Beautiful Moment in Life: Young Forever was released on May 2, 2016. With 300,000 presold copies,[56] it included three new singles: &quot;Epilogue: Young Forever&quot;, &quot;Fire&quot;, and &quot;Save Me&quot;,[32][57] which debuted in the top three spots on the Billboard World Digital Charts.[56] The album topped Gaon Weekly Chart in South Korea for two consecutive weeks and reached number 107 on the Billboard 200.[58][59][60] The Most Beautiful Moment in Life: Young Forever won Album of the Year at the 2016 Melon Music Awards.[61] BTS embarked on their Asia tour extension, 2016 BTS LIVE &quot;The Most Beautiful Moment in Life On Stage: Epilogue&quot; from May to August 2016. Tickets for the 14 shows in 10 Asian cities sold out, some in as little as five seconds.[62]
+
+In September 2016, BTS released their second Japanese studio album Youth.[63] The album sold 44,547 on the first day of its release, and charted 1st in the Oricon Daily Album Chart.[64][65] The album was eventually certified Gold with sales of roughly over 100,000 in Japan.[66] It was followed one month later in October,[32] by their next studio album Wings, which combined the themes of youth presented in their previous &quot;youth trilogy&quot; with temptation and adversity.[67] The album and its tracks, including the single &quot;Blood Sweat &amp; Tears&quot; immediately rose to the top on eight music charts, including the Gaon Music Chart, and led the iTunes album charts in 23 countries.[68][69] Wings opened at number 26 on the Billboard 200, with 16,000 album-equivalent units in the U.S. for the week of its release, the best week ever there for a K-pop album.[70] It became the best-selling album in Gaon Album Chart history.[71]
+
+In February 2017, BTS released the repackaged edition of Wings entitled You Never Walk Alone. The 700,000 pre-orders of it (an increase from the 500,000 pre-orders of Wings) helped break the record for most albums sold in a month in South Korea, as it reached 1.49 million copies by the end of its first month.[72][73] The lead single was &quot;Spring Day&quot;[32] and it won Best Song of the Year at the 2017 Melon Music Awards.[74] BTS&#39; second world tour, 2017 BTS Live Trilogy Episode III: The Wings Tour, began in February.[75] On the tour, BTS played arenas in the U.S., such as New Jersey&#39;s Prudential Center and California&#39;s Honda Center. Tickets for the North American leg sold out within hours and two shows were added.[76][77] After completing the North American leg, BTS attended the 24th Billboard Music Awards in May and won Top Social Artist,[78] the first K-pop group to win a Billboard award.[79] BTS fans cast over 300 million votes for the band and broke a six-year winning streak held by Justin Bieber, a performer with 100 million Twitter followers.[80] This caused the international media to focus on the ability of BTS&#39; fandom to propel the group to such a victory.[80]
+
+BTS released a remake of Seo Taiji&#39;s &quot;Come Back Home&quot; (1995) in July 2017, giving it new lyrics but maintaining the theme of urging societal change.[81] Later that year, BTS embarked on their &quot;Love Yourself&quot; album series, with theme of the enlightenment of self-love through the &quot;起承轉結&quot; (Korean: 기승전결; RR: Giseungjeongyeol) narrative sequence of &quot;beginning, development, turn, and conclusion.&quot;[82] BTS released its first part, their fifth EP, Love Yourself: Her, on September 18.[79][83] RM considered &quot;DNA&quot;, the lead single from that album,[84] as &quot;taking BTS to new ground. We tried to apply new grammar and perspectives.&quot;[32] He said of the album, &quot;I believe it’s going to be the starting point of a second chapter of our career; the beginning of our Chapter Two.&quot;[85] Sonically, the EP served as &quot;a dual exploration of the group&#39;s electro-pop and hip-hop leanings&quot;.[84]
+
+Love Yourself: Her debuted at number seven on the Billboard 200.[86] The album had 1,664,041 sales in May 2017 to lead the Gaon Chart,[87] and was the first in 16 years to exceed 1.2 million copies sold since g.o.d&#39;s fourth album Chapter 4 (2001).[88][89] &quot;DNA&quot; was released simultaneously with the EP, and its music video accumulated 21 million views in its first 24 hours.[90] It became BTS&#39;s first entry on the Billboard Hot 100, charting at number 85, making them the first K-pop boy band to reach that chart.[91] The single rose to number 67 the following week and became the highest-charting song on the Hot 100 for any K-pop group.[92] A remix of &quot;Mic Drop&quot; from the album, featuring Desiigner, was released as a single and peaked at number 28, the first time a K-pop group had cracked the top forty.[93][94] Both singles attained Gold certification from the Recording Industry Association of America (RIAA) in early 2018.[95] &quot;Mic Drop&quot; achieved Platinum status in the US later that year.[96]
+
+In November 2017, BTS became the first K-pop group to perform at the American Music Awards.[97][98] BTS won Artist of the Year at the 19th Mnet Asian Music Awards in December, winning for the second consecutive year.[99] They released &quot;DNA&quot; and &quot;Mic Drop&quot; together with a new song &quot;Crystal Snow&quot; as a single album in Japan on December 6, 2017, though the songs were made digitally available elsewhere.[32][100] It topped the Oricon Chart for the week of its release. It was the only album by a foreign artist to be certified Double Platinum in Japan in 2017.[101][102]
+
+Later that month, they made their Japanese television prime time music show debut on Music Station Super Live,[103] and ended the year performing on Dick Clark&#39;s New Year&#39;s Rockin&#39; Eve.[104][105]
+
+In 2017, BTS partnered with UNICEF on the &quot;Love Myself&quot; campaign, intended to help end violence, abuse and bullying, and to promote self-esteem and well-being among young people. Both Big Hit and the group pledged money to promote the campaign, and BTS sold special &quot;Love Myself&quot; merchandise and set up dedicated booths at concert venues. The campaign was renewed in 2021, with UNICEF deeming it to have been successful.[106]
+
+BTS won major awards at the Golden Disc and Seoul Music Awards in January 2018.[107][108] In March, the group premiered an eight-episode documentary titled Burn the Stage that offered a behind-the-scenes look at their 2017 Wings Tour, exclusively on YouTube Premium.[109][110] Their third Japanese studio album, Face Yourself, was released on April 4, 2018,[111] and quickly reached the top 5 of the U.S iTunes Albums chart. A nine-minute short film, titled Euphoria: Theme of &quot;Love Yourself: Wonder&quot; and featuring the song &quot;Euphoria&quot;, followed the next day as a prelude to the group&#39;s third Korean-language studio album, Love Yourself: Tear.[112] BTS promoted Tear&#39;s May 18, 2018 release with an appearance at the 25th Billboard Music Awards two days later,[113] where they made their initial BBMA performance with their single, &quot;Fake Love&quot;.[114][115] The group also won Top Social Artist for a second consecutive time.[116][117] The album coincided with the &quot;轉&quot; or &quot;turn&quot; of the series, touching on the tortuous enlightenment of loving without being loved, the pains and sorrows of separation, and providing encouragement to those without dreams.[118]
+
+Love Yourself: Tear debuted at number one its first week on the Billboard 200, becoming BTS&#39; first number-one album in the US and the first K-pop album to top the US albums chart.[119] It also became BTS&#39; first top-10 release in Britain, reaching number eight on the UK Albums Chart.[120] &quot;Fake Love&quot; became BTS&#39; top-10 single on the Hot 100, the first time a song sung mostly in a language other than English had debuted in the top 10.[121] BTS released their compilation album Love Yourself: Answer in August, 2018.[122] The album was supported by the single &quot;Idol&quot; and its alternative digital release featuring Nicki Minaj.[123][124]
+
+Love Yourself: Answer sold over 1.9 million copies on the Gaon Album Chart in August 2018.[125] The album became BTS&#39; second number-one on the Billboard 200 and led to their highest US sales week in the country to that point with 185,000 album equivalent units.[126] In November 2018, Love Yourself: Answer became the first Korean language album to be certified Gold by the RIAA.[96] &quot;Idol&quot; and Love Yourself: Answer both received Platinum certifications in the US, with sales of more than 1 million.[127]
+
+In conjunction with Love Yourself: Answer&#39;s release in August 2018, BTS commenced their world tour, BTS World Tour: Love Yourself, with two concerts in the Seoul Olympic Stadium, which sold out in a matter of seconds, as did others of the 22 shows in 12 countries.[128][129] In October, BTS released their collaboration with Steve Aoki &quot;Waste It on Me&quot;, their first all-English language feature.[130][131] For the final stop of the North American leg, the group performed at Citi Field in New York City, marking the first time a Korean act performed at a US stadium.[132] According to StubHub, BTS was the second best-selling concert act outside the US, behind only Ed Sheeran.[133] That October, BTS renewed their contract with Big Hit Entertainment through 2026.[134]
+
+In early November 2018, a popular Japanese music show cancelled BTS&#39; performance, citing a T-shirt a member wore the year before, bearing a photograph of a mushroom cloud following the bombing of Nagasaki.[135] In the same month, the Jewish human rights organization Simon Wiesenthal Center (SWC) stated that BTS owed an apology for that shirt, and for clothing and flags with Nazi symbolism.[136] Big Hit Entertainment issued an apology, explaining that the images were not intended to be hurtful to the victims of Nazism or atomic bombings and that the group and management would take steps to prevent future mistakes.[137] They also stated the flags were meant to be a commentary on the Korean school system.[138] The apology was accepted by SWC and the Korean Atomic Bomb Victim Association.[139][140] John Lie, in his scholarly article on BTS, opined that the Nazi incident showed that the group is not tightly controlled, as are other K-pop ensembles, whose every move seems scripted, and that the members have opinions and are not afraid to express them.[141]
+
+At the 20th Mnet Asian Music Awards, BTS won Artist of the Year and ranked number eight on Billboard&#39;s year-end Top Artist Chart and were also the number two act of the year in the Duo/Group ranking, only behind Imagine Dragons.[142][143] They were also listed as one of the 50 most influential people by Bloomberg for their &quot;willingness to address social issues, mental health, and politics, despite being in a genre often painted as bubble gum pop&quot;.[144]
+
+In February 2019, BTS, for the first time, were presenters at the Grammy Awards.[145][146] In April, Time named them one of the Time 100, the most influential people of 2019.[147] Their EP, Map of the Soul: Persona, was released on April 12 with the single &quot;Boy with Luv&quot; (Korean: 작은 것들을 위한 시; RR: Jageun geotdeureul wihan si), featuring American singer Halsey.[148] The EP&#39;s release was followed by a performance on Saturday Night Live, the first K-pop act to appear there.[149] Map of the Soul: Persona became the first Korean-language album to reach the number one position in both the UK and Australia,[150][151] and the group&#39;s third album to top the Billboard 200 in less than a year.[152] Map of the Soul: Persona became the best-selling album ever in South Korea in terms of physical copies sold, with more than 3.2 million sales in less than a month.[153][154] &quot;Boy with Luv&quot; debuted at number eight on the Billboard Hot 100 in April 2019, the highest placement ever for a K-pop song.[155]
+
+Following their two wins at the 26th Billboard Music Awards in May, including for Top Duo/Group,[156] BTS embarked on their world tour stadium extension, Love Yourself: Speak Yourself.[157] Due to the demand, BTS added more shows after tickets for the first dates sold out within two hours.[158] In the lead up to the release of their mobile game BTS World, in June 2019 BTS released &quot;Dream Glow&quot; featuring Charli XCX,[159] &quot;A Brand New Day&quot; with Zara Larsson,[160] and &quot;All Night&quot; with Juice Wrld.[161] The group released the song &quot;Heartbeat&quot; with a music video from the game&#39;s official soundtrack, titled BTS World: Original Soundtrack.[162] The soundtrack was certified Double Platinum by Gaon.[163] On July 3, 2019, pre-orders for the single &quot;Lights&quot; crossed one million copies, marking the first time a foreign artist had accomplished this in Japan since Celine Dion in 1995..[164][165] &quot;Lights&quot; debuted at number 81 on the Billboard Japan Hot 100 for the chart issue date of July 8, 2019 and reached number one the following week.[166][167] On August 8, 2019, &quot;Lights&quot; received Million certification from the RIAJ, denoting shipments of one million copies.[168][169][170]
+
+Love Yourself: Her and Love Yourself: Tear both crossed 2 million copies in August.[171] All three albums of the Love Yourself series have sold more than 2 million copies each in South Korea.[172] Love Yourself: Tear gained silver certification by the BPI for sales in the UK, becoming their third album to do so following Love Yourself: Answer and Map of the Soul: Persona.[173] For the final stop of their record-breaking Love Yourself: Speak Yourself World Tour, the group played Seoul&#39;s Olympic Stadium.[174] BTS was the third top-grossing touring musical act of 2019.[175] That same month, they released a remix version of the song &quot;Make It Right&quot; featuring Lauv.[176] In November, BTS won three times at the 2019 American Music Awards, for Best Tour, Favorite Duo or Group – Pop/Rock, and Favorite Social Artist (the second consecutive year).[177]
+
+In December, they attended both the 2019 Melon Music Awards and 2019 Mnet Asian Music Awards. In each case, they became the first group to sweep the four major awards.[178][179][180] At the 34th Golden Disc Awards, BTS became the first artists in history to win grand prizes in both the physical and digital categories in a single year.[181] Map of the Soul: Persona was named the second best-selling physical album of 2019 in the US by Nielsen Music behind Taylor Swift&#39;s Lover and was ranked sixth overall on the chart of Top 10 Albums (Total Sales) in the US.[182] BTS wrapped 2019 as the fourth highest ranked group on Billboard&#39;s Top Billboard 200 Artists–Duo/Group ranking, behind Queen, Imagine Dragons and the Beatles.[183] Map of the Soul: Persona was named as the third best-selling album of 2019 by the International Federation of the Phonographic Industry (IFPI), making BTS the first Korean artist to be listed on the Global Top 10 Album Chart in consecutive years.[184][185][186]  The IFPI named BTS as one of the best-selling artists of 2019 for a second consecutive year, making them the first non-English speaking act to achieve this.[187][188]
+
+In January 2020, BTS released &quot;Black Swan&quot; along with a choreography art film performed by MN Dance Company of Slovenia as the first single from their album, Map of the Soul: 7.[189][190] Album distributor Dreamus reported that stock pre-orders of the album reached a record-breaking 4.02 million.[191] Later that month, BTS performed at the 62nd Annual Grammy Awards, making BTS the first Korean act to perform at the Grammys.[192][193] Map of the Soul: 7 was released on February 21 to favorable reviews.[194][195] The album was supported by the single &quot;On&quot; and an alternative digital release of it featuring Australian singer Sia.[196] According to Gaon Chart, Map of the Soul: 7 sold over 4.1 million copies in nine days after its release, surpassing Map of the Soul: Persona to become the best-selling album in South Korean history and the first album to be certified quadruple million.[197] The album debuted atop the US Billboard 200, making BTS the fastest group to earn four number one albums since the Beatles in 1966–1968.[198] &quot;On&quot; debuted at number four on the Billboard Hot 100, giving BTS its first top-five hit,, and the most Hot 100 top-10 entries of any Korean act, with three.[199] BTS planned to support the Map of the Soul album series with a concert series, Map of the Soul Tour, beginning in April,[200] but this was indefinitely postponed due to the COVID-19 pandemic.[201]
+
+In April 2020, BTS became the first K-pop artist to sell more than 20 million albums cumulatively,[202] making them the best-selling artist in South Korean history.[172][203] That month, amid the pandemic restrictions, BTS held a two-day online streaming concert event titled Bang Bang Con, where the group shared footage of past concerts on their YouTube channel.[204] On June 7, BTS headlined YouTube&#39;s Dear Class of 2020 online graduation event, performing &quot;Boy with Luv&quot;, &quot;Spring Day&quot;, and &quot;Mikrokosmos&quot;.[205] Their commencement speeches highlighted their own graduations and offered &quot;messages of hope and inspiration for the class of 2020 in both Korean and English&quot;.[206] On June 14, BTS held an online live concert, Bang Bang Con: The Live, as part of the seventh anniversary of their debut.[207] It garnered peak viewership of  756,000 live viewers in 107 countries and territories, setting the record for the largest audience for a paid virtual concert.[208][209] On June 19, BTS released the Japanese single, &quot;Stay Gold&quot;, from their fourth Japanese album, Map of the Soul: 7 – The Journey, which was released worldwide on July 14.[210][211] It surpassed 564,000 copies in its first week, breaking the record for highest first week album sales by male foreign artists in Japan.[212]
+
+BTS released their first English-language single, &quot;Dynamite&quot;, on August 21.[213] &quot;Dynamite&quot; debuted at number one on the US Billboard Hot 100 chart, earning BTS their first chart topper and making them the first all-South Korean act to earn a number one single in the US.[214][215] The single also topped Billboard&#39;s new Global 200 for the week ending September 24, as well as Global Excluding US charts, becoming the first single to top both simultaneously.[216] &quot;Dynamite&quot; peaked at number five on the US Mainstream Top 40 and on the. Billboard Pop Singles chart, becoming their first Top 10 on each and the former the highest-charting entry by a Korean act.[217][218] On August 31, BTS made their MTV Video Music Awards (VMAs) debut with the first live performance of &quot;Dynamite&quot;[219] and won four awards: Best Group, Best Choreography, Best Pop Video, and Best K-pop (the last three for their music video for &quot;On&quot;).[220] On October 14, they performed the single at the 2020 Billboard Music Awards and won the Top Social Artist award for a fourth consecutive year.[221][222]
+
+On October 2, 2020, BTS released a remix of Jawsh 685 and Jason Derulo&#39;s single &quot;Savage Love (Laxed – Siren Beat)&quot;.[223] It topped the Billboard Hot 100 chart.[224] On October 10 and 11, BTS hosted a two-day virtual pay-per-view concert, at KSPO Dome in Seoul, called Map of the Soul ON:E, which drew 993,000 viewers representing 191 countries or regions.[225][226][227] On November 20, BTS released their fifth Korean studio album Be, with &quot;Life Goes On&quot; as its lead single.[228] &quot;Life Goes On&quot; debuted at number one on the Billboard Hot 100 chart.[229] With this, BTS achieved their third consecutive number one on the Hot 100 in three months. &quot;Life Goes On&quot; became the first song performed primarily in Korean to reach the top spot on that chart.[230][231]
+
+On November 24, 2020, BTS became the first Korean pop artists to be recognized by the Recording Academy when &quot;Dynamite&quot; received a nomination for Best Pop Duo/Group Performance at the 63rd Annual Grammy Awards.[232] The group won the Special International Music Award at the 62nd Japan Record Awards.[233] Kim, in his book on the influence of Korean popular culture, suggested that 2020, the worst year in many people&#39;s lives, was a noteworthy one for Korean culture, with Parasite winning the Academy Award for Best Picture, and BTS posting three number-one hits on the Billboard Global 200.[234]
+
+On March 4, 2021, the IFPI named BTS its Global Recording Artist of the Year for 2020, the first Asian and first non-English speaking act to top the ranking.[236] BTS occupied three spots in the Global Album Sales Chart of 2020 with Map of the Soul: 7 coming in at number one, Be (Deluxe Edition) at number two, and Map of the Soul: 7–The Journey at number eight.[237] In the newly launched Global Album All Format Chart, Map of the Soul: 7 claimed the first position and Be (Deluxe Edition) claimed the fourth position.[238] On March 14, 2021, BTS performed &quot;Dynamite&quot; at the 63rd Annual Grammy Awards, becoming the first Korean nominee to perform, though they did not win the award.[239] On April 1, BTS released &quot;Film Out&quot;, the first single from their upcoming Japanese compilation album.[240] BTS held a two-day online streaming event on their YouTube channel beginning April 17, titled Bang Bang Con 21, and aired three of their previous in-person concerts.[241]
+
+BTS released their second English-language single, &quot;Butter&quot;, on May 21.[242] The song debuted at number one on the Billboard Hot 100 chart—their fourth number one in nine months—making them the quickest act to achieve four number ones since Justin Timberlake in 2006 and the fastest group since the Jackson 5 in 1970.[243] Their next English-language single, &quot;Permission to Dance&quot;, was released on July 9.[244] It became BTS&#39; eighth number-one on the Digital Songs chart, extending their record as the group with the most number-one entries on the ranking.[245] The band released the single &quot;My Universe&quot; with Coldplay on September 24, 2021.[246] The single debuted at number one on the Billboard Hot 100, making it the first collaboration between two groups to debut at number one.[247] The band held an online concert, titled Permission to Dance on Stage, on October 24, 2021, in Seoul.[248] On November 23, &quot;Butter&quot; earned a Grammy nomination for Best Pop Duo/Group Performance at the 64th Annual Grammy Awards.[249][250] Between November 27 and December 2, BTS held their first live performances before an in-person audience since before the pandemic. The band played four sold-out shows at SoFi Stadium in Los Angeles as a continuation of their Permission to Dance on Stage concert series.[251][252][253]
+
+On January 15, 2022, a fictional webtoon based on BTS, titled 7Fates: Chakho, was released. The comic surpassed 15 million views globally in its first two days of availability and became the highest-viewed title ever launched by Webtoon.[254][255] The band held three limited-capacity concerts at Seoul Olympic Stadium on March 10, 12, and 13—the largest music gatherings[a] approved by the South Korean government since the pandemic restrictions were imposed—with a total audience of 45,000 people.[256][257] On April 3, BTS performed &quot;Butter&quot; at the 64th Annual Grammy Awards,[250] though the song did not win the award it had been nominated for.[258] On April 8, the band gained seven nominations at the 2022 Billboard Music Awards[259] and won three, making them the most-nominated and the most-awarded group in the show&#39;s history.[260][261]
+
+BTS released their three-CD anthology album Proof on June 10, 2022.[262][263][264] On June 14, during their ninth anniversary celebrations, the band announced a temporary suspension of group activities to focus on solo projects and other endeavors.[265][266] Hybe Corporation, which owns Big Hit,[267] clarified in subsequent statements that BTS was neither disbanding nor going on hiatus, but would be actively furthering their individual careers with the label&#39;s full support while still participating in future group activities, including the filming of Run BTS.[268][269] The incident caused Hybe Corporation&#39;s stock to decline rapidly, resulting in a decrease in market value of $1.7 billion (US).[270] On August 24, Billboard magazine reported that BTS would be performing in Busan as a group on October 15 in a benefit concert, with all members participating under the banner of Yet to Come.[271]
+
+BTS have cited Seo Taiji and Boys,[272] Nas, Eminem, Kanye West, Drake, Post Malone, Charlie Puth, and Danger as musical inspirations.[273] They have also cited Queen as an influence, saying they &quot;grew up watching videos of Live Aid&quot;.[274] During their concert at Wembley Stadium in London, Jin paid tribute to Queen by leading the crowd in a version of Freddie Mercury&#39;s &quot;ay-oh&quot; chant.[274]
+
+Their 2016 album Wings was inspired by Hermann Hesse&#39;s coming of age novel, Demian.[275] Their song &quot;Blood Sweat &amp; Tears&quot; quotes Friedrich Nietzsche&#39;s Thus Spoke Zarathustra, and its music video features visual references to Herbert James Draper&#39;s The Lament for Icarus, Pieter Bruegel&#39;s Landscape with the Fall of Icarus, and Pieter Bruegel&#39;s The Fall of the Rebel Angels.[276] Among the literary and other sources that have inspired their works are those by Haruki Murakami, Ursula K Le Guin, Carl Jung, George Orwell and Nietzsche.[277] The Love Yourself series was influenced by Erich Fromm&#39;s The Art of Loving,[267][278] and their 2018 song &quot;Magic Shop&quot; from Love Yourself: Tear was inspired by James R. Doty&#39;s memoir Into the Magic Shop.[279]
+
+Since their inception, BTS have emphasized hip hop as their musical base, largely due to the influence of RM and Suga&#39;s background as underground rappers;[280] during visits to the US, the group has received mentoring from American rappers.[281] Bang Si-hyuk previously acknowledged that K-pop as a whole draws from black music,[282] and author Crystal S. Anderson noted, &quot;BTS&#39;s rising popularity in the US represents the continuation of the ways that K-pop functions as part of a global R&amp;B tradition.&quot;[283]
+
+BTS experimented with R&amp;B, rock and jazz hip hop  on Dark &amp; Wild in 2014;[284][285] EDM in their The Most Beautiful Moment in Life album series;[50] moombahton and neo soul on Wings and You Never Walk Alone ;[286][67] future bass, Latin pop in their Love Yourself album series;[82] Korean rap, electro disco, slow-dance ballads,[287] emo rap, Afro pop,[288] funk, trap, pop rock, and hip pop in their Map of the Soul album series;[289] and disco pop in their single &quot;Dynamite&quot;.[290][291]
+
+
+Since their formation, BTS have believed that telling their own stories is the best way for the younger generation to relate to their music.[292] Writing many of their own lyrics,[293][294] the group discusses universal life experiences such as sadness and loneliness in their work and turn them into something lighter and more manageable. RM said that BTS tries to avoid a preaching or reprimanding tone in their songs &quot;because that&#39;s not the way that we want to spread our message ... We&#39;re born with different lives, but you cannot choose some things. So we thought that love, the real meaning of it, starts with loving ourselves and accepting some ironies and some destinies that we have from the very start.&quot;[295] When asked if it is difficult to write about things like mental health, Suga responded,
+We feel that people who have the platform to talk about those things really should talk more, because they say depression is something where you go to the hospital and you&#39;re diagnosed, but you can&#39;t really know until the doctor talks to you ... More and more, I think artists or celebrities who have a voice should talk about these problems and bring it up to the surface.[295]
+Themes explored in BTS&#39; discography have gone from exploring &quot;the troubles and anxieties of school-age youth [to] themes like love, friendship, loss, death, and more&quot;[296] Early BTS entries, such as &quot;No More Dream&quot; and &quot;N.O&quot; from their school trilogy, were described by Herman as motivated by personal experiences with South Korea&#39;s rigid approach to education and called for change to the educational system and societal expectations.[297] The members&#39; experiences with South Korean youth culture also inspired the songs &quot;Dope&quot; and &quot;Silver Spoon&quot; (Korean: 뱁새; RR: Baepsae) from their youth trilogy. These songs reference generational disparity and millennials having to give up romantic relationships, marriage, children, proper employment, homes, and social life in the face of economic difficulties and societal ills while facing condemnation from the media and older generations.[297] The group&#39;s label dubbed The Most Beautiful Moment in Life: Young Forever, the conclusion to their youth trilogy, &quot;a special album that marks the conclusion of the epic journey of the series, containing the last stories told by young people who, despite an uncertain and insecure reality (The Most Beautiful Moment in Life Pt. 1) continue to surge forward (The Most Beautiful Moment in Life Pt. 2).&quot;[298] Wings focused on mental health, criticisms of the Korean-pop “idol” scene, and delivering a female-empowerment message.[299] The Love Yourself series introduced new themes regarding youth culture in South Korea, including the excitement of love, pain of farewell, and enlightenment of self-love.[300] According to Sprinkel, BTS&#39; 2020 &quot;quarantine album&quot; Be &quot;chronicles the group&#39;s coming to terms with a suddenly new reality and offers support for their listeners going through the same upheaval and uncertainty&quot;.[301]
+
+BTS&#39; lyrics have also addressed topics outside youth culture specifically. The song &quot;Am I Wrong&quot; from Wings questioned societal apathy towards changing the status quo; the lyric &quot;We&#39;re all dogs and pigs / we become dogs because we&#39;re angry&quot; appeared to reference South Korean Ministry of Education official Na Hyang-wook, who advocated a caste system for the country and who reportedly described average people as &quot;dogs and pigs&quot;. BTS released the song amid the 2016 South Korean political scandal that resulted in the impeachment of president Park Geun-hye.[297] RM and Suga&#39;s personal struggles with mental health have inspired some of their music.[295][302] &quot;Not Today&quot; from 2017&#39;s You Never Walk Alone is an anti-establishment anthem, urging &quot;all the underdogs in the world&quot; to keep fighting,[303] and &quot;Spring Day&quot; honored the victims of the Sewol Ferry tragedy.[304] Journalist Jeff Benjamin praised BTS in Fuse for &quot;speak[ing] honestly about topics they deem important, even in a conservative society&quot;.[305] Former South Korean president Moon Jae-in praised the septet: &quot;Each of the seven members sings in a way that is true to himself and the life he wants to live. Their melody and lyrics transcend regional borders, language, culture, and institutions.&quot;[306]
+
+On April 29, 2019, Time magazine named BTS one of the 100 most influential people of the year, labeling them the &quot;Princes of Pop&quot;.[307] Billboard executive Silvio Pietroluongo stated the group was as influential as the Beatles.[308] MRC Data executive Helena Kosinski noted that &quot;although BTS weren&#39;t the first to open the doors to K-Pop worldwide, they were the first to become mainstream. They don&#39;t just appeal to young people but also to the 50s and 60s age demographic.&quot;[309] The first non-English speaking artist to make the Global Artist Chart in 2018, BTS was the second best-selling artists worldwide across multiple media platforms, second only to Drake.[310][311][312] In 2020, BTS became the first non-western and non-English speaking artist to be named IFPI&#39;s Global Recording Artist of the Year.[236] In South Korea, BTS accounted for 41.9 percent of album sales in the first half of 2019, up from their market share of 25.3 percent the previous year.[313]
+
+In 2022, Youna Kim described BTS as having spearheaded the Korean wave, representing the global expansion of Korean culture as effectively as Psy did in the previous decade and with the strength of influence that the Academy Award-winning South Korean film Parasite had in 2020.[314] South Korea&#39;s central bank, the Bank of Korea, found in 2021 that BTS, including a &quot;ripple effect&quot; that included increased tourism to South Korea; increased interest in Korean culture, movies, and study of the Korean language; and added approximately US$5 billion per year to South Korea&#39;s economy, a growth of about 0.5 percent.[315] A 2018 study showed that, on average, 800,000 foreigners per year had visited South Korea over the past four years for BTS-related reasons.[316]
+
+Writers identified BTS as leaders even among other highly influential K-pop groups such as Girls&#39; Generation, Super Junior, Exo, Twice, and Blackpink[317] and note that BTS&#39; success shows the importance of a strong, active fan base in the age of social media, where fan campaigning can be as important as musical quality to a song&#39;s success.[318] The group has also distinguished themselves at the forefront of the business side of the K-pop industry by pursuing less restrictive contracts with their management company to maximize their artistic originality and creativity.[319][320] With this newer approach to career management, BTS created closer ties to the South Korean youth and encourage individuality and authenticity among their audience.[141]
+
+Political scientist Joseph Nye developed the concept of soft power in his 2004 book, Soft Power: The Means to Success in World Politics,[321][322] which researchers such as Maud Quessard have applied to BTS and their influence on entertainment diplomacy and international relations.[323] Nye wrote, &quot;when one country gets other countries to want what it wants might be called co-optive or soft power in contrast with the hard or command power of ordering others to do what it wants&quot;.[324] Youna Kim and Maud Quessard all read the currency of soft power as including culture, political values, and foreign policy, which applies to BTS&#39; ability to be co-optive in their approach to spreading their message of harmony, acceptance, and addressing life&#39;s setbacks via their broad appeal on the international stage.[323]
+
+Because of their influence, BTS were invited to address the United Nations General Assembly in September 2018[325][326] and perform before 400 officials, including Moon, at the 2018 Korea-France Friendship Concert in Paris, a summit celebrating the friendly relations between France and South Korea.[327] That year, BTS became the youngest recipients of the Order of Cultural Merit. Despite cultural medals traditionally being given to recipients with over 15 years of achievement, Moon recognized the group, five years into their career, for their contributions in spreading Korean culture and language worldwide.[328][329] In September 2019, BTS were mentioned by Moon while announcing strategies for the content industries, for having pioneered innovative business models through direct communication with fans.[330] In 2020, BTS were given the James A. Van Fleet Award in recognition of their outstanding contributions to the promotion of US-Korea relations, the youngest honorees to receive the award.[331][332] In July 2021, they were appointed Special Presidential Envoy for Future Generations and Culture by President Moon. In their role as envoys, they help to &quot;raise awareness on global agendas, such as sustainable development, to our future generations and to strengthen the nation&#39;s diplomatic power across the world&quot;[333] and appear at international events such as the 76th United Nations General Assembly.[334] On May 31, 2022, BTS visited US President Joe Biden at the White House to discuss the recent rise in anti-Asian hate crimes and discrimination.[335]
+
+According to Kyung Hyun Kim, BTS&#39; rise was facilitated by a great increase in music video programming and consumption on YouTube and the coming of an idol empire, including merchandising of nonmusical products, games, and fantasy fiction, as well as an expansion of online music fandom.[336] The group has a large, highly organized, online community of fans, known as ARMY (Adorable Representative M.C. for Youth), which translates the group&#39;s lyrics and social media posts into other languages and matches charitable contributions of BTS&#39; members. As of 2020, some 40 million ARMY members subscribe to the band&#39;s YouTube channel, with more than 30 million following the official BTS Twitter and Instagram accounts.[80] The fan community helps generate BTS&#39; number-one chart rankings via coordinated campaigns on streaming platforms,[337] as well as pushes to feature BTS&#39; music on radio stations and television.[338] Some ARMY members may even surpass the group itself in influence among BTS fans.[339]
+
+Unlike other K-pop groups, BTS interacted with and engaged their followers from their earliest days over social media,[340] as well as via BTS Universe, an alternate storyline involving the members told through music videos, mobile games, books, short films, and more that gives fans ample room to theorize.[341]  Kim suggested that ARMY are drawn to BTS since the members are seen as underdogs, originating from the Korean countryside and a relatively minor Korean entertainment company, which allows young fans to identify with them.[342] BTS&#39; lyrics speak to social values, and fans respond by trying to improve the world. As a result, the fandom regularly embraces activism on charitable causes and socio-political issues such as refugee crises, racial discrimination, children&#39;s rights, global warming, and the COVID-19 pandemic.[343][344][345] Feedback from ARMY to BTS affects the group&#39;s actions and lyrics; BTS has eliminated certain Korean words that sound like American racial slurs from their songs and ended collaboration with a Japanese producer when Korean ARMY members deemed his views extreme.[346]
+
+Per South Korean author Jiyoung Lee, the relationship between BTS and ARMY is &quot;a mutual exchange between artists and their fans&quot; that is about more than merely &quot;ensuring the band&#39;s primacy&quot;, but also &quot;extending the band&#39;s message of positivity into the world&quot;. Lee opines that BTS and ARMY are &quot;a symbol of change in zeitgeist, not just of generational change&quot;.[347] The band members themselves agree and have long acknowledged their fans&#39; role in their success.[348] According to Sarah Keith, &quot;BTS embody a moment of generational transformation. ARMY represents a &#39;coming of age&#39; for the young, in which cultural production and influence are global and meaningful, and where the youth are politically and socially engaged.&quot;[349]
+
+Among BTS&#39; endorsement deals, the group has partnered with Puma beginning in 2015, BTS initially promoted its sportswear as Puma Korea&#39;s brand ambassadors before expanding to become global ambassadors in 2018, and promoting the remix of Puma&#39;s &quot;Turin&quot; and &quot;Sportstyle&quot; line worldwide.[350][351][352] In 2019, BTS signed with Fila to endorse its sportswear.[353] BTS has also served as global brand ambassadors for LG Electronics&#39; smartphones,[354] and Hyundai Motors&#39; 2019 flagship SUV the &quot;Palisade&quot;[355] and hydrogen fuel cell electric SUV, the &quot;Nexo&quot;.[356] BTS became global ambassadors of the electric street racing series Formula E to promote how electric vehicles can help combat climate change.[357] In 2020, BTS partnered with Samsung Electronics,[358] releasing a limited BTS-themed version of the Galaxy S20+ and Galaxy Buds+.[359] As the first male pop group ever to collaborate with Dior, BTS sported ensembles from Kim Jones&#39; Pre-Fall 2019 collection at their concert at Stade de France.[360] The band became global brand ambassadors for Louis Vuitton in April 2021.[361]
+
+Korean-language studio albums
+
+Japanese-language studio albums
+
+
+
+Films
+
+Online shows
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./PythonBeingCool/WebScrapper"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="../ReadImages/ReadImages.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Reading Images</p>
+        </div>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By A-S620<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

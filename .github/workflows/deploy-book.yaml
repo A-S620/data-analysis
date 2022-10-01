@@ -3,8 +3,6 @@ name: deploy-book
 # Only run this when the master branch changes
 on:
   push:
-    paths:
-      - 'notebook/**'
     branches:
       - main
     # If your git repository has the Jupyter Book within some-subfolder next to

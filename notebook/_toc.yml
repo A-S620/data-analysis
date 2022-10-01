@@ -10,6 +10,8 @@ parts:
   - file: DataAnalysis/Histograms
   - file: DataAnalysis/SimpleLinearRegression
   - file: DataAnalysis/MultipleLinearRegression
-- caption: Python Basics
+- caption: Python Being Cool
   chapters:
-    - file: PythonBasics/PythonBasics
+    - file: PythonBeingCool/PythonBasics/PythonBasics
+    - file: PythonBeingCool/ReadImages/ReadImages
+    - file: PythonBeingCool/WebScrapper/WebScrapper

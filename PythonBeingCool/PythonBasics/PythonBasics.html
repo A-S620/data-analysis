@@ -386,6 +386,24 @@ title="Print to PDF"
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">a</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="c1"># [1]</span>
+
+<span class="n">b</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="c1"># [1]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1]
+[1, 2]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test</span> <span class="o">=</span> <span class="s2">&quot;Hello&quot;</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">test</span><span class="p">)</span>
@@ -407,7 +425,7 @@ title="Print to PDF"
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">aNumber</span> <span class="o">=</span> <span class="s2">&quot;3&quot;</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">aNumber</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">aNumber</span><span class="p">)</span> <span class="c1"># counted as a number</span>
 </pre></div>
 </div>
 </div>
@@ -442,6 +460,109 @@ title="Print to PDF"
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1 2 3
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">this_is_a_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">])</span>
+<span class="n">this_is_a_list</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">])</span>
+<span class="n">this_is_a_list</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 2, 3, 4, 5, 7, 8, 9]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a_tuple</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">tuple_into_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">a_tuple</span><span class="p">)</span>
+<span class="n">tuple_into_list</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 2, 3, 4, 5]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">string</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;Like an echo in the forest</span>
+
+<span class="s2">The day will come back around</span>
+
+<span class="s2">As if nothing happened</span>
+
+<span class="s2">Yeah, life goes on</span>
+
+<span class="s2">Like an arrow in the blue sky</span>
+
+<span class="s2">Another day flying by</span>
+
+<span class="s2">On my pillow, on my table</span>
+
+<span class="s2">Yeah, life goes on</span>
+
+<span class="s2">Like this again&quot;&quot;&quot;</span>
+
+<span class="n">string_as_list</span> <span class="o">=</span> <span class="n">string</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+<span class="n">string_as_list</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="nb">len</span><span class="p">)</span>
+<span class="n">string_as_list</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;an&#39;,
+ &#39;in&#39;,
+ &#39;As&#39;,
+ &#39;if&#39;,
+ &#39;on&#39;,
+ &#39;an&#39;,
+ &#39;in&#39;,
+ &#39;by&#39;,
+ &#39;On&#39;,
+ &#39;my&#39;,
+ &#39;on&#39;,
+ &#39;my&#39;,
+ &#39;on&#39;,
+ &#39;the&#39;,
+ &#39;The&#39;,
+ &#39;day&#39;,
+ &#39;the&#39;,
+ &#39;sky&#39;,
+ &#39;day&#39;,
+ &#39;Like&#39;,
+ &#39;echo&#39;,
+ &#39;will&#39;,
+ &#39;come&#39;,
+ &#39;back&#39;,
+ &#39;life&#39;,
+ &#39;goes&#39;,
+ &#39;Like&#39;,
+ &#39;blue&#39;,
+ &#39;life&#39;,
+ &#39;goes&#39;,
+ &#39;Like&#39;,
+ &#39;this&#39;,
+ &#39;Yeah,&#39;,
+ &#39;arrow&#39;,
+ &#39;table&#39;,
+ &#39;Yeah,&#39;,
+ &#39;again&#39;,
+ &#39;forest&#39;,
+ &#39;around&#39;,
+ &#39;flying&#39;,
+ &#39;nothing&#39;,
+ &#39;Another&#39;,
+ &#39;pillow,&#39;,
+ &#39;happened&#39;]
 </pre></div>
 </div>
 </div>

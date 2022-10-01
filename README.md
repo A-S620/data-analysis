@@ -1,3 +1,6 @@
+[![CodeQL](https://github.com/A-S620/data-science/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/A-S620/data-science/actions/workflows/codeql-analysis.yml)
+[![deploy-book](https://github.com/A-S620/data-science/actions/workflows/deploy-book.yaml/badge.svg)](https://github.com/A-S620/data-science/actions/workflows/deploy-book.yaml)
+[![pages-build-deployment](https://github.com/A-S620/data-science/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/A-S620/data-science/actions/workflows/pages/pages-build-deployment)
 # data-science
 This Repo stores my data science notes and projects.
 

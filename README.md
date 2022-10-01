@@ -31,3 +31,8 @@ To serve the notebook locally:
 | ```pip --help```                    | Get help with pip                                             |
 
 
+## Useful Links
+
+| Link | Description                                                           |
+|------|-----------------------------------------------------------------------|
+| [Jupyter GitHub Pages and Actions](https://jupyterbook.org/en/stable/publish/gh-pages.html) | Information for using GitHub Pages and Actions with Jupyter notebook. |

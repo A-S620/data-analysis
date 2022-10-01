@@ -5,6 +5,8 @@ on:
   push:
     branches:
       - main
+    paths:
+      - notebook/**
     # If your git repository has the Jupyter Book within some-subfolder next to
     # unrelated files, you can make this run only if a file within that specific
     # folder has been modified.
@@ -27,7 +29,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install -r ./notebook/requirements.txt
+          pip install -r requirements.txt
 
       # Build the book
       - name: Build the book

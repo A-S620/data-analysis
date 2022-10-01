@@ -10,3 +10,4 @@ beautifulsoup4~=4.11.1
 jupyter
 notebook
 jupyter-core
+libtesseract-dev

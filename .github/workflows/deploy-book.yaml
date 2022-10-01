@@ -3,8 +3,6 @@ name: deploy-book
 # Only run this when the master branch changes
 on:
   push:
-    paths:
-      - 'notebook/**'
     branches:
       - main
     # If your git repository has the Jupyter Book within some-subfolder next to
@@ -29,12 +27,12 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install -r requirements.txt
+          pip install -r ./notebook/requirements.txt
 
       # Build the book
       - name: Build the book
         run: |
-          jupyter-book build .
+          jupyter-book build notebook
 
       # Push the book's HTML to github-pages
       - name: GitHub Pages action

@@ -15,3 +15,6 @@ parts:
     - file: PythonBeingCool/PythonBasics/PythonBasics
     - file: PythonBeingCool/ReadImages/ReadImages
     - file: PythonBeingCool/WebScrapper/WebScrapper
+- caption: Projects
+  chapters:
+    - file: Projects/USMedicalInsuranceCosts

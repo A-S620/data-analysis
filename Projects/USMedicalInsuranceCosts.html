@@ -356,12 +356,46 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#aim">
+   Aim
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#project-goals">
+   Project Goals
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#analysis">
+   Analysis
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
@@ -373,6 +407,29 @@ title="Print to PDF"
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#aim">
+   Aim
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#project-goals">
+   Project Goals
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#analysis">
+   Analysis
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -382,6 +439,202 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="u-s-medical-insurance-costs">
 <h1>U.S. Medical Insurance Costs<a class="headerlink" href="#u-s-medical-insurance-costs" title="Permalink to this headline">#</a></h1>
+<section id="aim">
+<h2>Aim<a class="headerlink" href="#aim" title="Permalink to this headline">#</a></h2>
+<p>The aim of this project is to explore the U.S. Medical Insurance Costs data set and understand how different factors impact the charges.</p>
+</section>
+<section id="project-goals">
+<h2>Project Goals<a class="headerlink" href="#project-goals" title="Permalink to this headline">#</a></h2>
+<p>The goals of this project are:</p>
+<ul class="simple">
+<li><p>Determine which gender has the highest average charge</p></li>
+<li><p>Determine which region has the highest average charge</p></li>
+<li><p>Determine the relationship between BMI and charges</p></li>
+</ul>
+</section>
+<section id="analysis">
+<h2>Analysis<a class="headerlink" href="#analysis" title="Permalink to this headline">#</a></h2>
+<p>This section will analyse the data included in the data set.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">path</span> <span class="o">=</span> <span class="s1">&#39;../data/insurance.csv&#39;</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 1338 entries, 0 to 1337
+Data columns (total 7 columns):
+ #   Column    Non-Null Count  Dtype  
+---  ------    --------------  -----  
+ 0   age       1338 non-null   int64  
+ 1   sex       1338 non-null   object 
+ 2   bmi       1338 non-null   float64
+ 3   children  1338 non-null   int64  
+ 4   smoker    1338 non-null   object 
+ 5   region    1338 non-null   object 
+ 6   charges   1338 non-null   float64
+dtypes: float64(2), int64(2), object(3)
+memory usage: 73.3+ KB
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>age</th>
+      <th>sex</th>
+      <th>bmi</th>
+      <th>children</th>
+      <th>smoker</th>
+      <th>region</th>
+      <th>charges</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>1338.000000</td>
+      <td>1338</td>
+      <td>1338.000000</td>
+      <td>1338.000000</td>
+      <td>1338</td>
+      <td>1338</td>
+      <td>1338.000000</td>
+    </tr>
+    <tr>
+      <th>unique</th>
+      <td>NaN</td>
+      <td>2</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2</td>
+      <td>4</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>top</th>
+      <td>NaN</td>
+      <td>male</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>no</td>
+      <td>southeast</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>freq</th>
+      <td>NaN</td>
+      <td>676</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1064</td>
+      <td>364</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>39.207025</td>
+      <td>NaN</td>
+      <td>30.663397</td>
+      <td>1.094918</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>13270.422265</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>14.049960</td>
+      <td>NaN</td>
+      <td>6.098187</td>
+      <td>1.205493</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>12110.011237</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>18.000000</td>
+      <td>NaN</td>
+      <td>15.960000</td>
+      <td>0.000000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1121.873900</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>27.000000</td>
+      <td>NaN</td>
+      <td>26.296250</td>
+      <td>0.000000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4740.287150</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>39.000000</td>
+      <td>NaN</td>
+      <td>30.400000</td>
+      <td>1.000000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>9382.033000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>51.000000</td>
+      <td>NaN</td>
+      <td>34.693750</td>
+      <td>2.000000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>16639.912515</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>64.000000</td>
+      <td>NaN</td>
+      <td>53.130000</td>
+      <td>5.000000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>63770.428010</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">

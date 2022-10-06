@@ -9,3 +9,4 @@ pytesseract~=0.3.10
 beautifulsoup4~=4.11.1
 jupyterlab
 jupyter
+IPython

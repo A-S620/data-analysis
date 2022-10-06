@@ -522,7 +522,7 @@ title="Print to PDF"
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">HTML</span>
 <span class="kn">from</span> <span class="nn">shared.MetricsHTML</span> <span class="kn">import</span> <span class="n">style</span><span class="p">,</span> <span class="n">html</span>
-
+<span class="kn">from</span> <span class="nn">shared.palette</span> <span class="kn">import</span> <span class="n">palette</span>
 <span class="n">path</span> <span class="o">=</span> <span class="s1">&#39;../data/insurance.csv&#39;</span>
 
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
@@ -718,7 +718,7 @@ memory usage: 73.3+ KB
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sex_and_charges</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;sex&#39;</span><span class="p">,</span> <span class="s1">&#39;charges&#39;</span><span class="p">]]</span>
 <span class="n">sex_data</span> <span class="o">=</span> <span class="n">sex_and_charges</span><span class="p">[</span><span class="s1">&#39;sex&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
-<span class="n">sex_data</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;sex&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#9056FA&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;The Count of Male vs Female records in the dataset&#39;</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;Sex&#39;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;Count&#39;</span><span class="p">);</span>
+<span class="n">sex_data</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;sex&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">palette</span><span class="p">[</span><span class="s2">&quot;Pink Lace&quot;</span><span class="p">],</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;The Count of Male vs Female records in the dataset&#39;</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;Sex&#39;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;Count&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -739,44 +739,22 @@ memory usage: 73.3+ KB
 <span class="n">male_charges</span> <span class="o">=</span> <span class="n">sex_and_charges</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;sex == &#39;male&#39;&quot;</span><span class="p">)[</span><span class="s1">&#39;charges&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 <span class="n">male_charges_display</span> <span class="o">=</span> <span class="s1">&#39;$&#39;</span> <span class="o">+</span> <span class="nb">format</span><span class="p">(</span><span class="n">male_charges</span><span class="p">,</span> <span class="s1">&#39;.2F&#39;</span><span class="p">)</span>
 
-<span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="n">style</span> <span class="o">+</span> <span class="n">html</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">female_charges_display</span><span class="p">,</span> <span class="n">male_charges_display</span><span class="p">)))</span>
+<span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="n">style</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">palette</span><span class="p">[</span><span class="s2">&quot;Pink Lace&quot;</span><span class="p">])</span> <span class="o">+</span> <span class="n">html</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">female_charges_display</span><span class="p">,</span> <span class="n">male_charges_display</span><span class="p">)))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html">
-<style> 
-#metrics {
-    width: 95%;
-    margin: 20px auto;
-}
-.box {
-    background-color: #9056FA;
-    height: 100px;
-    width: 200px;
-    margin: 20px;
-    font-weight: bold;
-    color:#FFFFFF;
-    text-align: center;
-    display: inline-block;
-    float: left;
-}
-.head {
-    padding: 15px;
-    font-size: 30px;
-    line-height: 35px;
-}
-</style>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">line</span> <span class="mi">6</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">male_charges</span> <span class="o">=</span> <span class="n">sex_and_charges</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;sex == &#39;male&#39;&quot;</span><span class="p">)[</span><span class="s1">&#39;charges&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">male_charges_display</span> <span class="o">=</span> <span class="s1">&#39;$&#39;</span> <span class="o">+</span> <span class="nb">format</span><span class="p">(</span><span class="n">male_charges</span><span class="p">,</span> <span class="s1">&#39;.2F&#39;</span><span class="p">)</span>
+<span class="ne">----&gt; </span><span class="mi">6</span> <span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="n">style</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">palette</span><span class="p">[</span><span class="s2">&quot;Pink Lace&quot;</span><span class="p">])</span> <span class="o">+</span> <span class="n">html</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">female_charges_display</span><span class="p">,</span> <span class="n">male_charges_display</span><span class="p">)))</span>
 
-<div id="metrics">
-    <div class="box">
-        <div class="head">$12569.58</div>
-    </div>
-    <div class="box">
-        <div class="head">$13956.75</div>
-    </div>
+<span class="ne">KeyError</span>: &#39;\n    width&#39;
+</pre></div>
 </div>
-</div></div>
+</div>
 </div>
 </section>
 </section>

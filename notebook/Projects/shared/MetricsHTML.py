@@ -5,7 +5,7 @@ style = '''
     margin: 20px auto;
 }
 .box {
-    background-color: #9056FA;
+    background-color: #fecef1;
     height: 100px;
     width: 200px;
     margin: 20px;
@@ -22,6 +22,7 @@ style = '''
 }
 </style>
 '''
+
 html = '''
 <div id="metrics">
     <div class="box">

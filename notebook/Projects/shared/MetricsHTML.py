@@ -1,48 +1,56 @@
 style = '''
 <style> 
-body {
-    background-color: #000000
-}
 #metrics {
     width: 95%;
     margin: 20px auto;
+    font-family: arial, sans-serif;
     display: flex;
-    justify-content: space-around;
-    align-items: center;
+    flex-direction: column;
+    text-align: center;
 }
-.head {
-    padding: 5px;
-    font-size: 30px;
+h1 {
+    font-size: 2em;
+    font-weight: 400;
+    margin: 20px auto;
+    color: ##32292f;
+}
+h2 {
+    font-size: 1.5em;
+    font-weight: 400;
     color: #32292f;
 }
-.sub-text {
-    padding: 5px;
-    font-size: 20px;
+h3 {
+    font-size: 1.2em;
+    font-weight: 400;
     color: #32292f;
 }
-.container {
-  border-radius: 15px 50px;
-  background: #89a1ef;
-  padding: 20px;
-  width: 200px;
-  height: 150px;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
+.metric-box {
+    margin: 0 auto;
+    background-color: #99e1d9;
+    border-radius: 15px 50px 30px;
+    display: inline-block;
+    padding: 20px;
+    margin: 10px 10px 10px 10px;
+    text-align: center;
+    width: 200px;
+    height: 150px;
 }
 </style>
 '''
 
 html = '''
 <div id="metrics">
-    <div class="container">
-        <div class="sub-text">{}</div>
-        <div class="head">{}</div>
+    <h1>Metrics</h1>
+    <div>
+        <div class="metric-box">
+            <h3 class="sub-text">{}</h3>
+            <h2 class="head">{}</h2>
+        </div>
+        <div class="metric-box">
+            <h3 class="sub-text">{}</h3>
+            <h2 class="head">{}</h2>
+        </div>    
     </div>
-    <div class="container">
-        <div class="sub-text">{}</div>
-        <div class="head">{}</div>
-    </div>
+
 </div>
 '''

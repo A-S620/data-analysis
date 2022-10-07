@@ -521,8 +521,8 @@ title="Print to PDF"
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">HTML</span>
-<span class="kn">from</span> <span class="nn">shared.MetricsHTML</span> <span class="kn">import</span> <span class="n">style</span><span class="p">,</span> <span class="n">html</span>
 <span class="kn">from</span> <span class="nn">shared.palette</span> <span class="kn">import</span> <span class="n">palette</span>
+<span class="kn">from</span> <span class="nn">shared.MetricsHTML</span> <span class="kn">import</span> <span class="n">style</span><span class="p">,</span> <span class="n">html</span>
 <span class="n">path</span> <span class="o">=</span> <span class="s1">&#39;../data/insurance.csv&#39;</span>
 
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
@@ -739,40 +739,53 @@ memory usage: 73.3+ KB
 <span class="n">male_charges</span> <span class="o">=</span> <span class="n">sex_and_charges</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;sex == &#39;male&#39;&quot;</span><span class="p">)[</span><span class="s1">&#39;charges&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 <span class="n">male_charges_display</span> <span class="o">=</span> <span class="s1">&#39;$&#39;</span> <span class="o">+</span> <span class="nb">format</span><span class="p">(</span><span class="n">male_charges</span><span class="p">,</span> <span class="s1">&#39;.2F&#39;</span><span class="p">)</span>
 
-<span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="n">style</span> <span class="o">+</span> <span class="n">html</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">female_charges_display</span><span class="p">,</span> <span class="n">male_charges_display</span><span class="p">)))</span>
+<span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="n">style</span> <span class="o">+</span> <span class="n">html</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;Female Charges&#39;</span><span class="p">,</span> <span class="n">female_charges_display</span><span class="p">,</span> <span class="s1">&#39;Male Charges&#39;</span><span class="p">,</span> <span class="n">male_charges_display</span><span class="p">)))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
 <style> 
+body {
+    background-color: #000000
+}
 #metrics {
     width: 95%;
     margin: 20px auto;
-}
-.box {
-    background-color: #fecef1;
-    height: 100px;
-    width: 200px;
-    margin: 20px;
-    font-weight: bold;
-    color:#FFFFFF;
-    text-align: center;
-    display: inline-block;
-    float: left;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
 .head {
-    padding: 15px;
+    padding: 5px;
     font-size: 30px;
-    line-height: 35px;
+    color: #32292f;
+}
+.sub-text {
+    padding: 5px;
+    font-size: 20px;
+    color: #32292f;
+}
+.container {
+  border-radius: 15px 50px;
+  background: #89a1ef;
+  padding: 20px;
+  width: 200px;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 </style>
 
 <div id="metrics">
-    <div class="box">
+    <div class="container">
+        <div class="sub-text">Female Charges</div>
         <div class="head">$12569.58</div>
     </div>
-    <div class="box">
+    <div class="container">
+        <div class="sub-text">Male Charges</div>
         <div class="head">$13956.75</div>
     </div>
 </div>

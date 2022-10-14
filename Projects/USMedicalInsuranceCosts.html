@@ -446,6 +446,30 @@ title="Print to PDF"
      </li>
     </ul>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#bmi-and-charges">
+     BMI and charges
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id2">
+       Date Representation
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#what-s-the-average-charge-per-bmi-interval">
+       What’s the average charge per BMI interval?
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#average-charge-per-bmi-interval">
+         Average charge per BMI interval
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
   </ul>
  </li>
 </ul>
@@ -535,6 +559,30 @@ title="Print to PDF"
      </li>
     </ul>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#bmi-and-charges">
+     BMI and charges
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id2">
+       Date Representation
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#what-s-the-average-charge-per-bmi-interval">
+       What’s the average charge per BMI interval?
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#average-charge-per-bmi-interval">
+         Average charge per BMI interval
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
   </ul>
  </li>
 </ul>
@@ -568,6 +616,8 @@ title="Print to PDF"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">HTML</span>
 <span class="kn">from</span> <span class="nn">shared.palette</span> <span class="kn">import</span> <span class="n">palette</span>
 <span class="kn">from</span> <span class="nn">shared.MetricsHTML</span> <span class="kn">import</span> <span class="n">style</span><span class="p">,</span> <span class="n">metrics_html</span>
@@ -973,6 +1023,113 @@ h3 {
     </div>  
 </div>
 </div></div> </div></div>
+</div>
+</section>
+</section>
+</section>
+<section id="bmi-and-charges">
+<h3>BMI and charges<a class="headerlink" href="#bmi-and-charges" title="Permalink to this headline">#</a></h3>
+<p>This section explores the relationship between BMI and charges in the dataset.</p>
+<section id="id2">
+<h4>Date Representation<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h4>
+<p>This section aims to compare the number of records for each BMI.
+The data set has:</p>
+<ul class="simple">
+<li><p>The least amount of records for the BMI interval of 50 to 55</p></li>
+<li><p>Tme most amount of records for the BMI interval of 30 to 35</p></li>
+</ul>
+<p>The histogram chart below shows the count of records for each BMI interval.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bmi_and_charges</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;bmi&#39;</span><span class="p">,</span> <span class="s1">&#39;charges&#39;</span><span class="p">]]</span>
+<span class="n">values</span><span class="p">,</span> <span class="n">bins</span><span class="p">,</span> <span class="n">bars</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;bmi&#39;</span><span class="p">],</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">palette</span><span class="p">[</span><span class="s2">&quot;Pink Lace&quot;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="p">[</span><span class="mi">15</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">25</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">35</span><span class="p">,</span><span class="mi">40</span><span class="p">,</span><span class="mi">45</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mi">55</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;BMI&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Frequency&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">bar_label</span><span class="p">(</span><span class="n">bars</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">palette</span><span class="p">[</span><span class="s2">&quot;Black Coffee&quot;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">margins</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;BMI Distribution in the dataset&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/USMedicalInsuranceCosts_14_0.png" src="../_images/USMedicalInsuranceCosts_14_0.png" />
+</div>
+</div>
+</section>
+<section id="what-s-the-average-charge-per-bmi-interval">
+<h4>What’s the average charge per BMI interval?<a class="headerlink" href="#what-s-the-average-charge-per-bmi-interval" title="Permalink to this headline">#</a></h4>
+<p>This section aims to determine the average charge per BMI interval.</p>
+<section id="average-charge-per-bmi-interval">
+<h5>Average charge per BMI interval<a class="headerlink" href="#average-charge-per-bmi-interval" title="Permalink to this headline">#</a></h5>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bmi_and_charges</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;bmi&#39;</span><span class="p">)</span>
+<span class="n">bmi_as_bins</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">bmi_and_charges</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="p">[</span><span class="mi">15</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">25</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">35</span><span class="p">,</span><span class="mi">40</span><span class="p">,</span><span class="mi">45</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mi">55</span><span class="p">])</span>
+<span class="n">bmi_and_charges_means</span> <span class="o">=</span> <span class="n">bmi_and_charges</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">bmi_as_bins</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">bmi_and_charges_means</span><span class="p">[</span><span class="s1">&#39;charges&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">bmi_and_charges_means</span><span class="p">[</span><span class="s1">&#39;charges&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="n">bmi_and_charges_means</span><span class="p">[[</span><span class="s1">&#39;charges&#39;</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>charges</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>(15, 20]</th>
+      <td>14772.24</td>
+    </tr>
+    <tr>
+      <th>(20, 25]</th>
+      <td>12638.73</td>
+    </tr>
+    <tr>
+      <th>(25, 30]</th>
+      <td>20758.45</td>
+    </tr>
+    <tr>
+      <th>(30, 35]</th>
+      <td>14695.22</td>
+    </tr>
+    <tr>
+      <th>(35, 40]</th>
+      <td>21781.64</td>
+    </tr>
+    <tr>
+      <th>(40, 45]</th>
+      <td>8849.19</td>
+    </tr>
+    <tr>
+      <th>(45, 50]</th>
+      <td>12100.10</td>
+    </tr>
+    <tr>
+      <th>(50, 55]</th>
+      <td>24089.37</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 </section>
 </section>

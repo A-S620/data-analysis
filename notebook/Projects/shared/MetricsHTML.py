@@ -1,3 +1,5 @@
+from typing import Dict, List
+
 style = '''
 <style> 
 #metrics {
@@ -24,11 +26,15 @@ h3 {
     font-weight: 400;
     color: #32292f;
 }
+.metrics-display {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
 .metric-box {
     margin: 0 auto;
     background-color: #99e1d9;
     border-radius: 15px 50px 30px;
-    display: inline-block;
     padding: 20px;
     margin: 10px 10px 10px 10px;
     text-align: center;
@@ -37,20 +43,22 @@ h3 {
 }
 </style>
 '''
-
-html = '''
-<div id="metrics">
-    <h1>Metrics</h1>
-    <div>
-        <div class="metric-box">
-            <h3 class="sub-text">{}</h3>
-            <h2 class="head">{}</h2>
-        </div>
-        <div class="metric-box">
-            <h3 class="sub-text">{}</h3>
-            <h2 class="head">{}</h2>
-        </div>    
-    </div>
-
+htmlTitle = '''
+<h1>{}</h1>
+'''
+metricBox = '''
+<div>
+    <div class="metric-box">
+        <h3 class="sub-text">{}</h3>
+        <h2 class="head">{}</h2>
+    </div>  
 </div>
 '''
+
+
+def metrics_html(title, metrics: List[Dict[str, str]]):
+    metric_box = ''
+    for metric in metrics:
+        metric_box += metricBox.format(metric['title'], metric['metric'])
+    return style + '''<div id="metrics">''' + htmlTitle.format(title) + '''<div class="metrics-display">''' \
+        + metric_box + '''</div>''' + '''</div> '''

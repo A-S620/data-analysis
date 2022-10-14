@@ -422,6 +422,30 @@ title="Print to PDF"
      </li>
     </ul>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#region-and-charges">
+     Region and charges
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id1">
+       Date Representation
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#what-s-the-average-charge-per-region">
+       What’s the average charge per region?
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#average-charge-per-region">
+         Average charge per region
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
   </ul>
  </li>
 </ul>
@@ -487,6 +511,30 @@ title="Print to PDF"
      </li>
     </ul>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#region-and-charges">
+     Region and charges
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id1">
+       Date Representation
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#what-s-the-average-charge-per-region">
+       What’s the average charge per region?
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#average-charge-per-region">
+         Average charge per region
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
   </ul>
  </li>
 </ul>
@@ -522,7 +570,7 @@ title="Print to PDF"
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">HTML</span>
 <span class="kn">from</span> <span class="nn">shared.palette</span> <span class="kn">import</span> <span class="n">palette</span>
-<span class="kn">from</span> <span class="nn">shared.MetricsHTML</span> <span class="kn">import</span> <span class="n">style</span><span class="p">,</span> <span class="n">html</span>
+<span class="kn">from</span> <span class="nn">shared.MetricsHTML</span> <span class="kn">import</span> <span class="n">style</span><span class="p">,</span> <span class="n">metrics_html</span>
 <span class="n">path</span> <span class="o">=</span> <span class="s1">&#39;../data/insurance.csv&#39;</span>
 
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
@@ -718,7 +766,8 @@ memory usage: 73.3+ KB
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sex_and_charges</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;sex&#39;</span><span class="p">,</span> <span class="s1">&#39;charges&#39;</span><span class="p">]]</span>
 <span class="n">sex_data</span> <span class="o">=</span> <span class="n">sex_and_charges</span><span class="p">[</span><span class="s1">&#39;sex&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
-<span class="n">sex_data</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;sex&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">palette</span><span class="p">[</span><span class="s2">&quot;Pink Lace&quot;</span><span class="p">],</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;The Count of Male vs Female records in the dataset&#39;</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;Sex&#39;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;Count&#39;</span><span class="p">);</span>
+<span class="n">sex_plot</span> <span class="o">=</span> <span class="n">sex_data</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;sex&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">palette</span><span class="p">[</span><span class="s2">&quot;Pink Lace&quot;</span><span class="p">],</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;The Count of Male vs Female records in the dataset&#39;</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;Sex&#39;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;Count&#39;</span><span class="p">);</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="n">sex_plot</span><span class="o">.</span><span class="n">bar_label</span><span class="p">(</span><span class="n">sex_plot</span><span class="o">.</span><span class="n">containers</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -734,12 +783,11 @@ memory usage: 73.3+ KB
 <h5>Average charge for Females versus Males<a class="headerlink" href="#average-charge-for-females-versus-males" title="Permalink to this headline">#</a></h5>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">female_charges</span> <span class="o">=</span> <span class="n">sex_and_charges</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;sex == &#39;female&#39;&quot;</span><span class="p">)[</span><span class="s1">&#39;charges&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-<span class="n">female_charges_display</span> <span class="o">=</span> <span class="s1">&#39;$&#39;</span> <span class="o">+</span> <span class="nb">format</span><span class="p">(</span><span class="n">female_charges</span><span class="p">,</span> <span class="s1">&#39;.2F&#39;</span><span class="p">)</span>
-<span class="n">male_charges</span> <span class="o">=</span> <span class="n">sex_and_charges</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;sex == &#39;male&#39;&quot;</span><span class="p">)[</span><span class="s1">&#39;charges&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-<span class="n">male_charges_display</span> <span class="o">=</span> <span class="s1">&#39;$&#39;</span> <span class="o">+</span> <span class="nb">format</span><span class="p">(</span><span class="n">male_charges</span><span class="p">,</span> <span class="s1">&#39;.2F&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">female_charges_display</span> <span class="o">=</span> <span class="s1">&#39;$&#39;</span> <span class="o">+</span> <span class="nb">format</span><span class="p">(</span><span class="n">sex_and_charges</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;sex == &#39;female&#39;&quot;</span><span class="p">)[</span><span class="s1">&#39;charges&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="s1">&#39;.2F&#39;</span><span class="p">)</span>
+<span class="n">male_charges_display</span> <span class="o">=</span> <span class="s1">&#39;$&#39;</span> <span class="o">+</span> <span class="nb">format</span><span class="p">(</span><span class="n">sex_and_charges</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;sex == &#39;male&#39;&quot;</span><span class="p">)[</span><span class="s1">&#39;charges&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="s1">&#39;.2F&#39;</span><span class="p">)</span>
 
-<span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="n">style</span> <span class="o">+</span> <span class="n">html</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;Female Charges&#39;</span><span class="p">,</span> <span class="n">female_charges_display</span><span class="p">,</span> <span class="s1">&#39;Male Charges&#39;</span><span class="p">,</span> <span class="n">male_charges_display</span><span class="p">)))</span>
+<span class="n">metrics</span> <span class="o">=</span> <span class="p">[{</span><span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="s1">&#39;Female Charges&#39;</span><span class="p">,</span> <span class="s1">&#39;metric&#39;</span><span class="p">:</span> <span class="n">female_charges_display</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="s1">&#39;Male Charges&#39;</span><span class="p">,</span> <span class="s1">&#39;metric&#39;</span><span class="p">:</span> <span class="n">male_charges_display</span><span class="p">}]</span>
+<span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="n">metrics_html</span><span class="p">(</span><span class="s1">&#39;Average Charge for Females vs Males&#39;</span><span class="p">,</span> <span class="n">metrics</span><span class="p">)))</span>
 </pre></div>
 </div>
 </div>
@@ -770,11 +818,15 @@ h3 {
     font-weight: 400;
     color: #32292f;
 }
+.metrics-display {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
 .metric-box {
     margin: 0 auto;
     background-color: #99e1d9;
     border-radius: 15px 50px 30px;
-    display: inline-block;
     padding: 20px;
     margin: 10px 10px 10px 10px;
     text-align: center;
@@ -782,22 +834,145 @@ h3 {
     height: 150px;
 }
 </style>
-
 <div id="metrics">
-    <h1>Metrics</h1>
-    <div>
-        <div class="metric-box">
-            <h3 class="sub-text">Female Charges</h3>
-            <h2 class="head">$12569.58</h2>
-        </div>
-        <div class="metric-box">
-            <h3 class="sub-text">Male Charges</h3>
-            <h2 class="head">$13956.75</h2>
-        </div>    
-    </div>
-
+<h1>Average Charge for Females vs Males</h1>
+<div class="metrics-display">
+<div>
+    <div class="metric-box">
+        <h3 class="sub-text">Female Charges</h3>
+        <h2 class="head">$12569.58</h2>
+    </div>  
 </div>
-</div></div>
+
+<div>
+    <div class="metric-box">
+        <h3 class="sub-text">Male Charges</h3>
+        <h2 class="head">$13956.75</h2>
+    </div>  
+</div>
+</div></div> </div></div>
+</div>
+</section>
+</section>
+</section>
+<section id="region-and-charges">
+<h3>Region and charges<a class="headerlink" href="#region-and-charges" title="Permalink to this headline">#</a></h3>
+<p>This section explores the relationship between region and charges in the dataset.</p>
+<section id="id1">
+<h4>Date Representation<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h4>
+<p>This section aims to compare the number of records for each region.</p>
+<p>Though the dataset has an almost equal split between region, the Southeast has the most records:</p>
+<ul class="simple">
+<li><p>There are 364 records for Southeast</p></li>
+<li><p>There are 325 records for Southwest</p></li>
+<li><p>There are 325 records for Northwest</p></li>
+<li><p>There are 324 record for Northeast
+The bar chart below shows the count of records for each region.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">region_and_charges</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;region&#39;</span><span class="p">,</span> <span class="s1">&#39;charges&#39;</span><span class="p">]]</span>
+<span class="n">region_data</span> <span class="o">=</span> <span class="n">region_and_charges</span><span class="p">[</span><span class="s1">&#39;region&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+<span class="n">region_plot</span> <span class="o">=</span> <span class="n">region_data</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;region&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">palette</span><span class="p">[</span><span class="s2">&quot;Pink Lace&quot;</span><span class="p">],</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;The Count of records in the dataset for each region&#39;</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;Region&#39;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;Count&#39;</span><span class="p">)</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="n">region_plot</span><span class="o">.</span><span class="n">bar_label</span><span class="p">(</span><span class="n">region_plot</span><span class="o">.</span><span class="n">containers</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/USMedicalInsuranceCosts_10_0.png" src="../_images/USMedicalInsuranceCosts_10_0.png" />
+</div>
+</div>
+</section>
+<section id="what-s-the-average-charge-per-region">
+<h4>What’s the average charge per region?<a class="headerlink" href="#what-s-the-average-charge-per-region" title="Permalink to this headline">#</a></h4>
+<p>This section aims to determine the average charge per region.</p>
+<section id="average-charge-per-region">
+<h5>Average charge per region<a class="headerlink" href="#average-charge-per-region" title="Permalink to this headline">#</a></h5>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">metrics</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">region_and_charges_means</span> <span class="o">=</span> <span class="n">region_and_charges</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;region&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">row_index</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">region_and_charges_means</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+    <span class="n">metrics</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="n">row_index</span><span class="o">.</span><span class="n">capitalize</span><span class="p">(),</span> <span class="s1">&#39;metric&#39;</span><span class="p">:</span> <span class="s1">&#39;$&#39;</span> <span class="o">+</span> <span class="nb">format</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;charges&#39;</span><span class="p">],</span> <span class="s1">&#39;.2F&#39;</span><span class="p">)})</span>
+<span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="n">metrics_html</span><span class="p">(</span><span class="s1">&#39;Average Charge per Region&#39;</span><span class="p">,</span> <span class="n">metrics</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<style> 
+#metrics {
+    width: 95%;
+    margin: 20px auto;
+    font-family: arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+h1 {
+    font-size: 2em;
+    font-weight: 400;
+    margin: 20px auto;
+    color: ##32292f;
+}
+h2 {
+    font-size: 1.5em;
+    font-weight: 400;
+    color: #32292f;
+}
+h3 {
+    font-size: 1.2em;
+    font-weight: 400;
+    color: #32292f;
+}
+.metrics-display {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.metric-box {
+    margin: 0 auto;
+    background-color: #99e1d9;
+    border-radius: 15px 50px 30px;
+    padding: 20px;
+    margin: 10px 10px 10px 10px;
+    text-align: center;
+    width: 200px;
+    height: 150px;
+}
+</style>
+<div id="metrics">
+<h1>Average Charge per Region</h1>
+<div class="metrics-display">
+<div>
+    <div class="metric-box">
+        <h3 class="sub-text">Northeast</h3>
+        <h2 class="head">$13406.38</h2>
+    </div>  
+</div>
+
+<div>
+    <div class="metric-box">
+        <h3 class="sub-text">Northwest</h3>
+        <h2 class="head">$12417.58</h2>
+    </div>  
+</div>
+
+<div>
+    <div class="metric-box">
+        <h3 class="sub-text">Southeast</h3>
+        <h2 class="head">$14735.41</h2>
+    </div>  
+</div>
+
+<div>
+    <div class="metric-box">
+        <h3 class="sub-text">Southwest</h3>
+        <h2 class="head">$12346.94</h2>
+    </div>  
+</div>
+</div></div> </div></div>
 </div>
 </section>
 </section>

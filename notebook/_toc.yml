@@ -18,3 +18,4 @@ parts:
 - caption: Projects
   chapters:
     - file: Projects/USMedicalInsuranceCosts
+    - file: Projects/ProductDefects

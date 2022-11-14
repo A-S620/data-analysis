@@ -10,3 +10,4 @@ beautifulsoup4~=4.11.1
 jupyterlab
 jupyter
 IPython
+scipy

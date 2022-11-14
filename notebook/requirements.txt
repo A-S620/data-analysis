@@ -11,3 +11,5 @@ jupyterlab
 jupyter
 IPython
 scipy
+jupyter_core
+jupyter

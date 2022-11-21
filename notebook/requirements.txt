@@ -13,3 +13,4 @@ IPython
 scipy
 jupyter_core
 jupyter
+billboard.py

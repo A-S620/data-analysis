@@ -1,0 +1,942 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Billboard Data &#8212; Data Science</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Product Defects" href="ProductDefects.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/320_002.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Data Science</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Hello
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Data Analysis
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../DataAnalysis/DescriptiveAnalysis.html">
+   Descriptive Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../DataAnalysis/Histograms.html">
+   Histograms
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../DataAnalysis/SimpleLinearRegression.html">
+   Simple Linear Regression
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../DataAnalysis/MultipleLinearRegression.html">
+   Multiple Linear Regression
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Python Being Cool
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../PythonBeingCool/PythonBasics/PythonBasics.html">
+   Python Basics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../PythonBeingCool/ReadImages/ReadImages.html">
+   Reading Images
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../PythonBeingCool/WebScrapper/WebScrapper.html">
+   Web Scrapper
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Projects
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="USMedicalInsuranceCosts.html">
+   U.S. Medical Insurance Costs
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ProductDefects.html">
+   Product Defects
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Billboard Data
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/A-S620/data-science/main?urlpath=tree/data-science/Projects/BillboardData.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/A-S620/data-science"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/A-S620/data-science/issues/new?title=Issue%20on%20page%20%2FProjects/BillboardData.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/Projects/BillboardData.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sort-by-weeks-on-the-hot-100">
+   Sort by Weeks on the Hot 100
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Billboard Data</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sort-by-weeks-on-the-hot-100">
+   Sort by Weeks on the Hot 100
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="billboard-data">
+<h1>Billboard Data<a class="headerlink" href="#billboard-data" title="Permalink to this headline">#</a></h1>
+<p>This notebook uses the <a class="reference external" href="https://github.com/guoguo12/billboard-charts">billboard.py</a> library.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">date</span>
+<span class="kn">import</span> <span class="nn">billboard</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">today</span> <span class="o">=</span> <span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2">/%m/%Y&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Ran on: &#39;</span> <span class="o">+</span> <span class="n">today</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ran on: 21/11/2022
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hotOneHundred</span> <span class="o">=</span> <span class="n">billboard</span><span class="o">.</span><span class="n">ChartData</span><span class="p">(</span><span class="s1">&#39;hot-100&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">hotOneHundred</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>hot-100 chart from 2022-11-19
+-----------------------------
+1. &#39;Anti-Hero&#39; by Taylor Swift
+2. &#39;Rich Flex&#39; by Drake &amp; 21 Savage
+3. &#39;Major Distribution&#39; by Drake &amp; 21 Savage
+4. &#39;On BS&#39; by Drake &amp; 21 Savage
+5. &#39;Spin Bout U&#39; by Drake &amp; 21 Savage
+6. &#39;Pussy &amp; Millions&#39; by Drake &amp; 21 Savage Featuring Travis Scott
+7. &#39;Privileged Rappers&#39; by Drake &amp; 21 Savage
+8. &#39;Circo Loco&#39; by Drake &amp; 21 Savage
+9. &#39;BackOutsideBoyz&#39; by Drake
+10. &#39;Unholy&#39; by Sam Smith &amp; Kim Petras
+11. &#39;Hours In Silence&#39; by Drake &amp; 21 Savage
+12. &#39;Broke Boys&#39; by Drake &amp; 21 Savage
+13. &#39;Bad Habit&#39; by Steve Lacy
+14. &#39;Treacherous Twins&#39; by Drake &amp; 21 Savage
+15. &#39;Middle Of The Ocean&#39; by Drake
+16. &#39;Jumbotron Shit Poppin&#39; by Drake
+17. &#39;As It Was&#39; by Harry Styles
+18. &#39;More M’s&#39; by Drake &amp; 21 Savage
+19. &#39;I Guess It&#39;s Fuck Me&#39; by Drake
+20. &#39;I&#39;m Good (Blue)&#39; by David Guetta &amp; Bebe Rexha
+21. &#39;Super Freaky Girl&#39; by Nicki Minaj
+22. &#39;Lift Me Up&#39; by Rihanna
+23. &#39;Lavender Haze&#39; by Taylor Swift
+24. &#39;I Like You (A Happier Song)&#39; by Post Malone Featuring Doja Cat
+25. &#39;You Proof&#39; by Morgan Wallen
+26. &#39;Something In The Orange&#39; by Zach Bryan
+27. &#39;3AM On Glenwood&#39; by 21 Savage
+28. &#39;I Ain&#39;t Worried&#39; by OneRepublic
+29. &#39;Vegas&#39; by Doja Cat
+30. &#39;Midnight Rain&#39; by Taylor Swift
+31. &#39;Jimmy Cooks&#39; by Drake Featuring 21 Savage
+32. &#39;Under The Influence&#39; by Chris Brown
+33. &#39;Bejeweled&#39; by Taylor Swift
+34. &#39;Die For You&#39; by The Weeknd
+35. &#39;Sunroof&#39; by Nicky Youre &amp; dazy
+36. &#39;Maroon&#39; by Taylor Swift
+37. &#39;Wasted On You&#39; by Morgan Wallen
+38. &#39;Cuff It&#39; by Beyonce
+39. &#39;Karma&#39; by Taylor Swift
+40. &#39;Snow On The Beach&#39; by Taylor Swift Featuring Lana Del Rey
+41. &#39;Wait For U&#39; by Future Featuring Drake &amp; Tems
+42. &#39;You&#39;re On Your Own, Kid&#39; by Taylor Swift
+43. &#39;Titi Me Pregunto&#39; by Bad Bunny
+44. &#39;Just Wanna Rock&#39; by Lil Uzi Vert
+45. &#39;The Kind Of Love We Make&#39; by Luke Combs
+46. &#39;Shirt&#39; by SZA
+47. &#39;She Had Me At Heads Carolina&#39; by Cole Swindell
+48. &#39;About Damn Time&#39; by Lizzo
+49. &#39;Tomorrow 2&#39; by GloRilla &amp; Cardi B
+50. &#39;Unstoppable&#39; by Sia
+51. &#39;Vigilante Shit&#39; by Taylor Swift
+52. &#39;Thank God&#39; by Kane Brown With Katelyn Brown
+53. &#39;Die For You&#39; by Joji
+54. &#39;5 Foot 9&#39; by Tyler Hubbard
+55. &#39;Hold Me Closer&#39; by Elton John &amp; Britney Spears
+56. &#39;Question...?&#39; by Taylor Swift
+57. &#39;Golden Hour&#39; by JVKE
+58. &#39;Rock And A Hard Place&#39; by Bailey Zimmerman
+59. &#39;Fall In Love&#39; by Bailey Zimmerman
+60. &#39;Half Of Me&#39; by Thomas Rhett Featuring Riley Green
+61. &#39;Made You Look&#39; by Meghan Trainor
+62. &#39;Hotel Lobby (Unc And Phew)&#39; by Quavo &amp; Takeoff
+63. &#39;What My World Spins Around&#39; by Jordan Davis
+64. &#39;Until I Found You&#39; by Stephen Sanchez
+65. &#39;Mastermind&#39; by Taylor Swift
+66. &#39;Victoria’s Secret&#39; by Jax
+67. &#39;Labyrinth&#39; by Taylor Swift
+68. &#39;Star Walkin&#39; (League Of Legends Worlds Anthem)&#39; by Lil Nas X
+69. &#39;Son Of A Sinner&#39; by Jelly Roll
+70. &#39;Don&#39;t Come Lookin&#39;&#39; by Jackson Dean
+71. &#39;Sweet Nothing&#39; by Taylor Swift
+72. &#39;Romantic Homicide&#39; by d4vd
+73. &#39;California Breeze&#39; by Lil Baby
+74. &#39;Billie Eilish.&#39; by Armani White
+75. &#39;Wait In The Truck&#39; by HARDY Featuring Lainey Wilson
+76. &#39;Would&#39;ve, Could&#39;ve, Should&#39;ve&#39; by Taylor Swift
+77. &#39;Heyy&#39; by Lil Baby
+78. &#39;Wishful Drinking&#39; by Ingrid Andress With Sam Hunt
+79. &#39;Free Mind&#39; by Tems
+80. &#39;Music For A Sushi Restaurant&#39; by Harry Styles
+81. &#39;No Se Va&#39; by Grupo Frontera
+82. &#39;Whiskey On You&#39; by Nate Smith
+83. &#39;My Mind &amp; Me&#39; by Selena Gomez
+84. &#39;Forever&#39; by Lil Baby Featuring Fridayy
+85. &#39;Bigger Than The Whole Sky&#39; by Taylor Swift
+86. &#39;All Mine&#39; by Brent Faiyaz
+87. &#39;The Great War&#39; by Taylor Swift
+88. &#39;Calm Down&#39; by Rema &amp; Selena Gomez
+89. &#39;Miss You&#39; by Oliver Tree &amp; Robin Schulz
+90. &#39;Paris&#39; by Taylor Swift
+91. &#39;Last Last&#39; by Burna Boy
+92. &#39;Freestyle&#39; by Lil Baby
+93. &#39;Pick Me Up&#39; by Gabby Barrett
+94. &#39;In My Head&#39; by Juice WRLD
+95. &#39;Country On&#39; by Luke Bryan
+96. &#39;La Bachata&#39; by Manuel Turizo
+97. &#39;2 Be Loved (Am I Ready)&#39; by Lizzo
+98. &#39;High Infidelity&#39; by Taylor Swift
+99. &#39;Gotta Move On&#39; by Diddy &amp; Bryson Tiller
+100. &#39;Staying Alive&#39; by DJ Khaled Featuring Drake &amp; Lil Baby
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">songs</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">chartEntry</span> <span class="ow">in</span> <span class="n">hotOneHundred</span><span class="p">:</span>
+    <span class="n">song</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="n">chartEntry</span><span class="o">.</span><span class="n">title</span><span class="p">,</span> 
+        <span class="s1">&#39;artist&#39;</span><span class="p">:</span> <span class="n">chartEntry</span><span class="o">.</span><span class="n">artist</span><span class="p">,</span> 
+        <span class="s1">&#39;peakPos&#39;</span><span class="p">:</span> <span class="n">chartEntry</span><span class="o">.</span><span class="n">peakPos</span><span class="p">,</span> 
+        <span class="s1">&#39;lastPos&#39;</span><span class="p">:</span> <span class="n">chartEntry</span><span class="o">.</span><span class="n">lastPos</span><span class="p">,</span> 
+        <span class="s1">&#39;weeks&#39;</span><span class="p">:</span> <span class="n">chartEntry</span><span class="o">.</span><span class="n">weeks</span><span class="p">,</span> 
+        <span class="s1">&#39;rank&#39;</span><span class="p">:</span> <span class="n">chartEntry</span><span class="o">.</span><span class="n">rank</span><span class="p">,</span> 
+        <span class="s1">&#39;isNew&#39;</span><span class="p">:</span> <span class="n">chartEntry</span><span class="o">.</span><span class="n">isNew</span>
+    <span class="p">}</span>
+    <span class="n">songs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">song</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">songs</span><span class="p">)</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>title</th>
+      <th>artist</th>
+      <th>peakPos</th>
+      <th>lastPos</th>
+      <th>weeks</th>
+      <th>rank</th>
+      <th>isNew</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Anti-Hero</td>
+      <td>Taylor Swift</td>
+      <td>1</td>
+      <td>1</td>
+      <td>3</td>
+      <td>1</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Rich Flex</td>
+      <td>Drake &amp; 21 Savage</td>
+      <td>2</td>
+      <td>0</td>
+      <td>1</td>
+      <td>2</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Major Distribution</td>
+      <td>Drake &amp; 21 Savage</td>
+      <td>3</td>
+      <td>0</td>
+      <td>1</td>
+      <td>3</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>On BS</td>
+      <td>Drake &amp; 21 Savage</td>
+      <td>4</td>
+      <td>0</td>
+      <td>1</td>
+      <td>4</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Spin Bout U</td>
+      <td>Drake &amp; 21 Savage</td>
+      <td>5</td>
+      <td>0</td>
+      <td>1</td>
+      <td>5</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>95</th>
+      <td>La Bachata</td>
+      <td>Manuel Turizo</td>
+      <td>67</td>
+      <td>90</td>
+      <td>12</td>
+      <td>96</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>96</th>
+      <td>2 Be Loved (Am I Ready)</td>
+      <td>Lizzo</td>
+      <td>55</td>
+      <td>80</td>
+      <td>13</td>
+      <td>97</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>97</th>
+      <td>High Infidelity</td>
+      <td>Taylor Swift</td>
+      <td>33</td>
+      <td>79</td>
+      <td>3</td>
+      <td>98</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>98</th>
+      <td>Gotta Move On</td>
+      <td>Diddy &amp; Bryson Tiller</td>
+      <td>79</td>
+      <td>91</td>
+      <td>6</td>
+      <td>99</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>99</th>
+      <td>Staying Alive</td>
+      <td>DJ Khaled Featuring Drake &amp; Lil Baby</td>
+      <td>5</td>
+      <td>81</td>
+      <td>14</td>
+      <td>100</td>
+      <td>False</td>
+    </tr>
+  </tbody>
+</table>
+<p>100 rows × 7 columns</p>
+</div></div></div>
+</div>
+<section id="sort-by-weeks-on-the-hot-100">
+<h2>Sort by Weeks on the Hot 100<a class="headerlink" href="#sort-by-weeks-on-the-hot-100" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;weeks&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>title</th>
+      <th>artist</th>
+      <th>peakPos</th>
+      <th>lastPos</th>
+      <th>weeks</th>
+      <th>rank</th>
+      <th>isNew</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>36</th>
+      <td>Wasted On You</td>
+      <td>Morgan Wallen</td>
+      <td>9</td>
+      <td>22</td>
+      <td>52</td>
+      <td>37</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>As It Was</td>
+      <td>Harry Styles</td>
+      <td>1</td>
+      <td>5</td>
+      <td>32</td>
+      <td>17</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>47</th>
+      <td>About Damn Time</td>
+      <td>Lizzo</td>
+      <td>1</td>
+      <td>33</td>
+      <td>30</td>
+      <td>48</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>Something In The Orange</td>
+      <td>Zach Bryan</td>
+      <td>12</td>
+      <td>29</td>
+      <td>29</td>
+      <td>26</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>58</th>
+      <td>Fall In Love</td>
+      <td>Bailey Zimmerman</td>
+      <td>29</td>
+      <td>50</td>
+      <td>28</td>
+      <td>59</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>Middle Of The Ocean</td>
+      <td>Drake</td>
+      <td>15</td>
+      <td>0</td>
+      <td>1</td>
+      <td>15</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>Jumbotron Shit Poppin</td>
+      <td>Drake</td>
+      <td>16</td>
+      <td>0</td>
+      <td>1</td>
+      <td>16</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>More M’s</td>
+      <td>Drake &amp; 21 Savage</td>
+      <td>18</td>
+      <td>0</td>
+      <td>1</td>
+      <td>18</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>I Guess It's Fuck Me</td>
+      <td>Drake</td>
+      <td>19</td>
+      <td>0</td>
+      <td>1</td>
+      <td>19</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>Treacherous Twins</td>
+      <td>Drake &amp; 21 Savage</td>
+      <td>14</td>
+      <td>0</td>
+      <td>1</td>
+      <td>14</td>
+      <td>True</td>
+    </tr>
+  </tbody>
+</table>
+<p>100 rows × 7 columns</p>
+</div></div></div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./Projects"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="ProductDefects.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Product Defects</p>
+        </div>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By A-S620<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

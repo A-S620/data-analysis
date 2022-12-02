@@ -626,17 +626,17 @@ title="Print to PDF"
 <p>This section will analyse the data included in the data set.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">HTML</span>
-<span class="kn">from</span> <span class="nn">shared.palette</span> <span class="kn">import</span> <span class="n">palette</span>
-<span class="kn">from</span> <span class="nn">shared.MetricsHTML</span> <span class="kn">import</span> <span class="n">style</span><span class="p">,</span> <span class="n">metrics_html</span>
-<span class="n">path</span> <span class="o">=</span> <span class="s1">&#39;../data/insurance.csv&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import pandas as pd
+import matplotlib.pyplot as plt
+import numpy as np
+from IPython.display import display, HTML
+from shared.palette import palette
+from shared.MetricsHTML import style, metrics_html
+path = &#39;../data/insurance.csv&#39;
 
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+df = pd.read_csv(path)
 
-<span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+df.info()
 </pre></div>
 </div>
 </div>
@@ -661,7 +661,7 @@ memory usage: 73.3+ KB
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df.describe(include=&#39;all&#39;)
 </pre></div>
 </div>
 </div>
@@ -825,10 +825,10 @@ memory usage: 73.3+ KB
 <p>The bar chart below shows the count of records where the value was either male or female in the sex column.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sex_and_charges</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;sex&#39;</span><span class="p">,</span> <span class="s1">&#39;charges&#39;</span><span class="p">]]</span>
-<span class="n">sex_data</span> <span class="o">=</span> <span class="n">sex_and_charges</span><span class="p">[</span><span class="s1">&#39;sex&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
-<span class="n">sex_plot</span> <span class="o">=</span> <span class="n">sex_data</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;sex&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">palette</span><span class="p">[</span><span class="s2">&quot;Pink Lace&quot;</span><span class="p">],</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;The Count of Male vs Female records in the dataset&#39;</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;Sex&#39;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;Count&#39;</span><span class="p">);</span>
-<span class="n">labels</span> <span class="o">=</span> <span class="n">sex_plot</span><span class="o">.</span><span class="n">bar_label</span><span class="p">(</span><span class="n">sex_plot</span><span class="o">.</span><span class="n">containers</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>sex_and_charges = df[[&#39;sex&#39;, &#39;charges&#39;]]
+sex_data = sex_and_charges[&#39;sex&#39;].value_counts()
+sex_plot = sex_data.plot.bar(x=&#39;sex&#39;, color=palette[&quot;Pink Lace&quot;], title=&#39;The Count of Male vs Female records in the dataset&#39;, xlabel=&#39;Sex&#39;, ylabel=&#39;Count&#39;);
+labels = sex_plot.bar_label(sex_plot.containers[0])
 </pre></div>
 </div>
 </div>
@@ -844,11 +844,11 @@ memory usage: 73.3+ KB
 <h5>Average charge for Females versus Males<a class="headerlink" href="#average-charge-for-females-versus-males" title="Permalink to this headline">#</a></h5>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">female_charges_display</span> <span class="o">=</span> <span class="s1">&#39;$&#39;</span> <span class="o">+</span> <span class="nb">format</span><span class="p">(</span><span class="n">sex_and_charges</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;sex == &#39;female&#39;&quot;</span><span class="p">)[</span><span class="s1">&#39;charges&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="s1">&#39;.2F&#39;</span><span class="p">)</span>
-<span class="n">male_charges_display</span> <span class="o">=</span> <span class="s1">&#39;$&#39;</span> <span class="o">+</span> <span class="nb">format</span><span class="p">(</span><span class="n">sex_and_charges</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;sex == &#39;male&#39;&quot;</span><span class="p">)[</span><span class="s1">&#39;charges&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="s1">&#39;.2F&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>female_charges_display = &#39;$&#39; + format(sex_and_charges.query(&quot;sex == &#39;female&#39;&quot;)[&#39;charges&#39;].mean(), &#39;.2F&#39;)
+male_charges_display = &#39;$&#39; + format(sex_and_charges.query(&quot;sex == &#39;male&#39;&quot;)[&#39;charges&#39;].mean(), &#39;.2F&#39;)
 
-<span class="n">metrics</span> <span class="o">=</span> <span class="p">[{</span><span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="s1">&#39;Female Charges&#39;</span><span class="p">,</span> <span class="s1">&#39;metric&#39;</span><span class="p">:</span> <span class="n">female_charges_display</span><span class="p">},</span> <span class="p">{</span><span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="s1">&#39;Male Charges&#39;</span><span class="p">,</span> <span class="s1">&#39;metric&#39;</span><span class="p">:</span> <span class="n">male_charges_display</span><span class="p">}]</span>
-<span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="n">metrics_html</span><span class="p">(</span><span class="s1">&#39;Average Charge for Females vs Males&#39;</span><span class="p">,</span> <span class="n">metrics</span><span class="p">)))</span>
+metrics = [{&#39;title&#39;: &#39;Female Charges&#39;, &#39;metric&#39;: female_charges_display}, {&#39;title&#39;: &#39;Male Charges&#39;, &#39;metric&#39;: male_charges_display}]
+display(HTML(metrics_html(&#39;Average Charge for Females vs Males&#39;, metrics)))
 </pre></div>
 </div>
 </div>
@@ -932,10 +932,10 @@ The bar chart below shows the count of records for each region.</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">region_and_charges</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;region&#39;</span><span class="p">,</span> <span class="s1">&#39;charges&#39;</span><span class="p">]]</span>
-<span class="n">region_data</span> <span class="o">=</span> <span class="n">region_and_charges</span><span class="p">[</span><span class="s1">&#39;region&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
-<span class="n">region_plot</span> <span class="o">=</span> <span class="n">region_data</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;region&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">palette</span><span class="p">[</span><span class="s2">&quot;Pink Lace&quot;</span><span class="p">],</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;The Count of records in the dataset for each region&#39;</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;Region&#39;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s1">&#39;Count&#39;</span><span class="p">)</span>
-<span class="n">labels</span> <span class="o">=</span> <span class="n">region_plot</span><span class="o">.</span><span class="n">bar_label</span><span class="p">(</span><span class="n">region_plot</span><span class="o">.</span><span class="n">containers</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>region_and_charges = df[[&#39;region&#39;, &#39;charges&#39;]]
+region_data = region_and_charges[&#39;region&#39;].value_counts()
+region_plot = region_data.plot.bar(x=&#39;region&#39;, color=palette[&quot;Pink Lace&quot;], title=&#39;The Count of records in the dataset for each region&#39;, xlabel=&#39;Region&#39;, ylabel=&#39;Count&#39;)
+labels = region_plot.bar_label(region_plot.containers[0])
 </pre></div>
 </div>
 </div>
@@ -951,12 +951,12 @@ The bar chart below shows the count of records for each region.</p></li>
 <h5>Average charge per region<a class="headerlink" href="#average-charge-per-region" title="Permalink to this headline">#</a></h5>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">metrics</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="n">region_and_charges_means</span> <span class="o">=</span> <span class="n">region_and_charges</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;region&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>metrics = []
+region_and_charges_means = region_and_charges.groupby(&#39;region&#39;).mean()
 
-<span class="k">for</span> <span class="n">row_index</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">region_and_charges_means</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
-    <span class="n">metrics</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="n">row_index</span><span class="o">.</span><span class="n">capitalize</span><span class="p">(),</span> <span class="s1">&#39;metric&#39;</span><span class="p">:</span> <span class="s1">&#39;$&#39;</span> <span class="o">+</span> <span class="nb">format</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;charges&#39;</span><span class="p">],</span> <span class="s1">&#39;.2F&#39;</span><span class="p">)})</span>
-<span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="n">metrics_html</span><span class="p">(</span><span class="s1">&#39;Average Charge per Region&#39;</span><span class="p">,</span> <span class="n">metrics</span><span class="p">)))</span>
+for row_index, row in region_and_charges_means.iterrows():
+    metrics.append({&#39;title&#39;: row_index.capitalize(), &#39;metric&#39;: &#39;$&#39; + format(row[&#39;charges&#39;], &#39;.2F&#39;)})
+display(HTML(metrics_html(&#39;Average Charge per Region&#39;, metrics)))
 </pre></div>
 </div>
 </div>
@@ -1052,14 +1052,14 @@ The data set has:</p>
 <p>The histogram chart below shows the count of records for each BMI interval.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bmi_and_charges</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;bmi&#39;</span><span class="p">,</span> <span class="s1">&#39;charges&#39;</span><span class="p">]]</span>
-<span class="n">values</span><span class="p">,</span> <span class="n">bins</span><span class="p">,</span> <span class="n">bars</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;bmi&#39;</span><span class="p">],</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">palette</span><span class="p">[</span><span class="s2">&quot;Pink Lace&quot;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="p">[</span><span class="mi">15</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">25</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">35</span><span class="p">,</span><span class="mi">40</span><span class="p">,</span><span class="mi">45</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mi">55</span><span class="p">])</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;BMI&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Frequency&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">bar_label</span><span class="p">(</span><span class="n">bars</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">palette</span><span class="p">[</span><span class="s2">&quot;Black Coffee&quot;</span><span class="p">])</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">margins</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;BMI Distribution in the dataset&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>bmi_and_charges = df[[&#39;bmi&#39;, &#39;charges&#39;]]
+values, bins, bars = plt.hist(df[&#39;bmi&#39;], edgecolor=&#39;white&#39;, color=palette[&quot;Pink Lace&quot;], bins=[15,20,25,30,35,40,45,50,55])
+plt.xlabel(&quot;BMI&quot;)
+plt.ylabel(&quot;Frequency&quot;)
+plt.bar_label(bars, fontsize=15, color=palette[&quot;Black Coffee&quot;])
+plt.margins(x=0.01, y=0.1)
+plt.title(label=&quot;BMI Distribution in the dataset&quot;)
+plt.show()
 </pre></div>
 </div>
 </div>
@@ -1075,11 +1075,11 @@ The data set has:</p>
 <h5>Average charge per BMI interval<a class="headerlink" href="#average-charge-per-bmi-interval" title="Permalink to this headline">#</a></h5>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bmi_and_charges</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;bmi&#39;</span><span class="p">)</span>
-<span class="n">bmi_as_bins</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">bmi_and_charges</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="p">[</span><span class="mi">15</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">25</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">35</span><span class="p">,</span><span class="mi">40</span><span class="p">,</span><span class="mi">45</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mi">55</span><span class="p">])</span>
-<span class="n">bmi_and_charges_means</span> <span class="o">=</span> <span class="n">bmi_and_charges</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">bmi_as_bins</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-<span class="n">bmi_and_charges_means</span><span class="p">[</span><span class="s1">&#39;charges&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">bmi_and_charges_means</span><span class="p">[</span><span class="s1">&#39;charges&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
-<span class="n">bmi_and_charges_means</span><span class="p">[[</span><span class="s1">&#39;charges&#39;</span><span class="p">]]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>bmi_and_charges.set_index(&#39;bmi&#39;)
+bmi_as_bins = pd.cut(bmi_and_charges.index, bins=[15,20,25,30,35,40,45,50,55])
+bmi_and_charges_means = bmi_and_charges.groupby(bmi_as_bins).mean()
+bmi_and_charges_means[&#39;charges&#39;] = bmi_and_charges_means[&#39;charges&#39;].apply(lambda x: round(x, 2))
+bmi_and_charges_means[[&#39;charges&#39;]]
 </pre></div>
 </div>
 </div>

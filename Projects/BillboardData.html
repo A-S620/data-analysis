@@ -452,51 +452,51 @@ title="Print to PDF"
 <p>This notebook uses the <a class="reference external" href="https://github.com/guoguo12/billboard-charts">billboard.py</a> library.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">date</span>
-<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
-<span class="kn">from</span> <span class="nn">dateutil.relativedelta</span> <span class="kn">import</span> <span class="n">relativedelta</span>
-<span class="kn">import</span> <span class="nn">billboard</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from datetime import date
+from collections import Counter
+from dateutil.relativedelta import relativedelta
+import billboard
+import pandas as pd
+import numpy as np
 
-<span class="n">today</span> <span class="o">=</span> <span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2">/%m/%Y&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Ran on: &#39;</span> <span class="o">+</span> <span class="n">today</span><span class="p">)</span>
+today = date.today().strftime(&quot;%d/%m/%Y&quot;)
+print(&#39;Ran on: &#39; + today)
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ran on: 24/11/2022
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ran on: 02/12/2022
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">currentHot100</span> <span class="o">=</span> <span class="n">billboard</span><span class="o">.</span><span class="n">ChartData</span><span class="p">(</span><span class="s1">&#39;hot-100&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>currentHot100 = billboard.ChartData(&#39;hot-100&#39;)
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">convert_ChartData_to_array</span><span class="p">(</span><span class="n">chart</span><span class="p">):</span>
-    <span class="n">songs</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">chartEntry</span> <span class="ow">in</span> <span class="n">chart</span><span class="p">:</span>
-        <span class="n">song</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="n">chartEntry</span><span class="o">.</span><span class="n">title</span><span class="p">,</span>
-            <span class="s1">&#39;artist&#39;</span><span class="p">:</span> <span class="n">chartEntry</span><span class="o">.</span><span class="n">artist</span><span class="p">,</span>
-            <span class="s1">&#39;peakPos&#39;</span><span class="p">:</span> <span class="n">chartEntry</span><span class="o">.</span><span class="n">peakPos</span><span class="p">,</span>
-            <span class="s1">&#39;lastPos&#39;</span><span class="p">:</span> <span class="n">chartEntry</span><span class="o">.</span><span class="n">lastPos</span><span class="p">,</span>
-            <span class="s1">&#39;weeks&#39;</span><span class="p">:</span> <span class="n">chartEntry</span><span class="o">.</span><span class="n">weeks</span><span class="p">,</span>
-            <span class="s1">&#39;rank&#39;</span><span class="p">:</span> <span class="n">chartEntry</span><span class="o">.</span><span class="n">rank</span><span class="p">,</span>
-            <span class="s1">&#39;isNew&#39;</span><span class="p">:</span> <span class="n">chartEntry</span><span class="o">.</span><span class="n">isNew</span>
-        <span class="p">}</span>
-        <span class="n">songs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">song</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">songs</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def convert_ChartData_to_array(chart):
+    songs = []
+    for chartEntry in chart:
+        song = {
+            &#39;title&#39;: chartEntry.title,
+            &#39;artist&#39;: chartEntry.artist,
+            &#39;peakPos&#39;: chartEntry.peakPos,
+            &#39;lastPos&#39;: chartEntry.lastPos,
+            &#39;weeks&#39;: chartEntry.weeks,
+            &#39;rank&#39;: chartEntry.rank,
+            &#39;isNew&#39;: chartEntry.isNew
+        }
+        songs.append(song)
+    return songs
 
-<span class="n">hot100Array</span> <span class="o">=</span> <span class="n">convert_ChartData_to_array</span><span class="p">(</span><span class="n">currentHot100</span><span class="p">)</span>
-<span class="n">hot100DF</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">hot100Array</span><span class="p">)</span>
-<span class="n">hot100DF</span>
+hot100Array = convert_ChartData_to_array(currentHot100)
+hot100DF = pd.DataFrame(hot100Array)
+hot100DF
 </pre></div>
 </div>
 </div>
@@ -535,7 +535,7 @@ title="Print to PDF"
       <td>Taylor Swift</td>
       <td>1</td>
       <td>1</td>
-      <td>4</td>
+      <td>5</td>
       <td>1</td>
       <td>False</td>
     </tr>
@@ -545,7 +545,7 @@ title="Print to PDF"
       <td>Drake &amp; 21 Savage</td>
       <td>2</td>
       <td>2</td>
-      <td>2</td>
+      <td>3</td>
       <td>2</td>
       <td>False</td>
     </tr>
@@ -554,8 +554,8 @@ title="Print to PDF"
       <td>Unholy</td>
       <td>Sam Smith &amp; Kim Petras</td>
       <td>1</td>
-      <td>10</td>
-      <td>8</td>
+      <td>3</td>
+      <td>9</td>
       <td>3</td>
       <td>False</td>
     </tr>
@@ -564,18 +564,18 @@ title="Print to PDF"
       <td>Bad Habit</td>
       <td>Steve Lacy</td>
       <td>1</td>
-      <td>13</td>
-      <td>20</td>
+      <td>4</td>
+      <td>21</td>
       <td>4</td>
       <td>False</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>As It Was</td>
-      <td>Harry Styles</td>
+      <td>All I Want For Christmas Is You</td>
+      <td>Mariah Carey</td>
       <td>1</td>
-      <td>17</td>
-      <td>33</td>
+      <td>25</td>
+      <td>53</td>
       <td>5</td>
       <td>False</td>
     </tr>
@@ -591,51 +591,51 @@ title="Print to PDF"
     </tr>
     <tr>
       <th>95</th>
-      <td>The Great War</td>
-      <td>Taylor Swift</td>
-      <td>26</td>
-      <td>87</td>
-      <td>4</td>
+      <td>Die For You</td>
+      <td>Joji</td>
+      <td>53</td>
+      <td>72</td>
+      <td>3</td>
       <td>96</td>
       <td>False</td>
     </tr>
     <tr>
       <th>96</th>
-      <td>Gotta Move On</td>
-      <td>Diddy &amp; Bryson Tiller</td>
-      <td>79</td>
-      <td>99</td>
-      <td>7</td>
+      <td>Down Home</td>
+      <td>Jimmie Allen</td>
+      <td>88</td>
+      <td>0</td>
+      <td>4</td>
       <td>97</td>
       <td>False</td>
     </tr>
     <tr>
       <th>97</th>
-      <td>Forget Me</td>
-      <td>Lewis Capaldi</td>
-      <td>95</td>
-      <td>0</td>
-      <td>5</td>
+      <td>Going, Going, Gone</td>
+      <td>Luke Combs</td>
+      <td>98</td>
+      <td>99</td>
+      <td>2</td>
       <td>98</td>
       <td>False</td>
     </tr>
     <tr>
       <th>98</th>
-      <td>Going, Going, Gone</td>
-      <td>Luke Combs</td>
+      <td>Middle Of The Ocean</td>
+      <td>Drake</td>
+      <td>15</td>
+      <td>67</td>
+      <td>3</td>
       <td>99</td>
-      <td>0</td>
-      <td>1</td>
-      <td>99</td>
-      <td>True</td>
+      <td>False</td>
     </tr>
     <tr>
       <th>99</th>
-      <td>Bigger Than The Whole Sky</td>
-      <td>Taylor Swift</td>
-      <td>21</td>
-      <td>85</td>
-      <td>4</td>
+      <td>More M’s</td>
+      <td>Drake &amp; 21 Savage</td>
+      <td>18</td>
+      <td>69</td>
+      <td>3</td>
       <td>100</td>
       <td>False</td>
     </tr>
@@ -648,20 +648,153 @@ title="Print to PDF"
 <h2>📆 Sort by Weeks on the Hot 100<a class="headerlink" href="#sort-by-weeks-on-the-hot-100" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;weeks&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>hot100DF.sort_values(by=&#39;weeks&#39;, ascending=False)
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;weeks&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-<span class="ne">NameError</span>: name &#39;df&#39; is not defined
-</pre></div>
-</div>
-</div>
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>title</th>
+      <th>artist</th>
+      <th>peakPos</th>
+      <th>lastPos</th>
+      <th>weeks</th>
+      <th>rank</th>
+      <th>isNew</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>19</th>
+      <td>Wasted On You</td>
+      <td>Morgan Wallen</td>
+      <td>9</td>
+      <td>23</td>
+      <td>54</td>
+      <td>20</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>All I Want For Christmas Is You</td>
+      <td>Mariah Carey</td>
+      <td>1</td>
+      <td>25</td>
+      <td>53</td>
+      <td>5</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Rockin' Around The Christmas Tree</td>
+      <td>Brenda Lee</td>
+      <td>2</td>
+      <td>41</td>
+      <td>47</td>
+      <td>6</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Jingle Bell Rock</td>
+      <td>Bobby Helms</td>
+      <td>3</td>
+      <td>50</td>
+      <td>44</td>
+      <td>9</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>As It Was</td>
+      <td>Harry Styles</td>
+      <td>1</td>
+      <td>5</td>
+      <td>34</td>
+      <td>8</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>85</th>
+      <td>Heart Like A Truck</td>
+      <td>Lainey Wilson</td>
+      <td>86</td>
+      <td>86</td>
+      <td>2</td>
+      <td>86</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>75</th>
+      <td>Break My Heart</td>
+      <td>Rod Wave</td>
+      <td>76</td>
+      <td>91</td>
+      <td>2</td>
+      <td>76</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>97</th>
+      <td>Going, Going, Gone</td>
+      <td>Luke Combs</td>
+      <td>98</td>
+      <td>99</td>
+      <td>2</td>
+      <td>98</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>87</th>
+      <td>Down In Atlanta</td>
+      <td>Pharrell Williams &amp; Travis Scott</td>
+      <td>88</td>
+      <td>0</td>
+      <td>1</td>
+      <td>88</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>94</th>
+      <td>Got It Right</td>
+      <td>Rod Wave</td>
+      <td>95</td>
+      <td>0</td>
+      <td>1</td>
+      <td>95</td>
+      <td>True</td>
+    </tr>
+  </tbody>
+</table>
+<p>100 rows × 7 columns</p>
+</div></div></div>
 </div>
 </section>
 <section id="the-hotest-artists">
@@ -671,33 +804,33 @@ title="Print to PDF"
 <p>I dont want to break my computer by doing every single day of every singe year.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">all_entries_last_10_years</span><span class="p">(</span><span class="n">chartName</span><span class="p">):</span>   
-    <span class="n">currentDate</span> <span class="o">=</span> <span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">()</span>
-    <span class="n">tenYearCharts</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">):</span>
-        <span class="n">yearChart</span> <span class="o">=</span> <span class="n">billboard</span><span class="o">.</span><span class="n">ChartData</span><span class="p">(</span><span class="n">chartName</span><span class="p">,</span> <span class="n">date</span><span class="o">=</span> <span class="n">currentDate</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2">&quot;</span><span class="p">))</span>
-        <span class="n">yearChartAsArray</span> <span class="o">=</span> <span class="n">convert_ChartData_to_array</span><span class="p">(</span><span class="n">yearChart</span><span class="p">)</span>
-        <span class="n">year</span> <span class="o">=</span> <span class="n">currentDate</span><span class="o">.</span><span class="n">year</span>
-        <span class="n">tenYearCharts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">tenYearCharts</span><span class="p">,</span> <span class="n">yearChartAsArray</span><span class="p">])</span>
-        <span class="n">currentDate</span> <span class="o">=</span> <span class="n">currentDate</span> <span class="o">-</span> <span class="n">relativedelta</span><span class="p">(</span><span class="n">years</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">tenYearCharts</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def all_entries_last_10_years(chartName):
+    currentDate = date.today()
+    tenYearCharts = []
+    for i in range(1, 10):
+        yearChart = billboard.ChartData(chartName, date= currentDate.strftime(&quot;%Y-%m-%d&quot;))
+        yearChartAsArray = convert_ChartData_to_array(yearChart)
+        year = currentDate.year
+        tenYearCharts = np.concatenate([tenYearCharts, yearChartAsArray])
+        currentDate = currentDate - relativedelta(years=1)
+    return tenYearCharts
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tenYearHot100</span> <span class="o">=</span> <span class="n">all_entries_last_10_years</span><span class="p">(</span><span class="s1">&#39;hot-100&#39;</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">get_artist_count</span><span class="p">(</span><span class="n">chart</span><span class="p">):</span>
-    <span class="n">artists</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">chartEntry</span> <span class="ow">in</span> <span class="n">chart</span><span class="p">:</span>
-        <span class="n">artists</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">chartEntry</span><span class="p">[</span><span class="s1">&#39;artist&#39;</span><span class="p">])</span>
-    <span class="n">artistCount</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">artists</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">artistCount</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>tenYearHot100 = all_entries_last_10_years(&#39;hot-100&#39;)
+def get_artist_count(chart):
+    artists = []
+    for chartEntry in chart:
+        artists.append(chartEntry[&#39;artist&#39;])
+    artistCount = Counter(artists)
+    return artistCount
 
-<span class="n">hot100ArtistCountDF</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">get_artist_count</span><span class="p">(</span><span class="n">tenYearHot100</span><span class="p">),</span> <span class="n">orient</span><span class="o">=</span><span class="s1">&#39;index&#39;</span><span class="p">)</span>
+hot100ArtistCountDF = pd.DataFrame.from_dict(get_artist_count(tenYearHot100), orient=&#39;index&#39;)
 
-<span class="n">hot100ArtistCountDF</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+hot100ArtistCountDF.head()
 </pre></div>
 </div>
 </div>
@@ -725,24 +858,24 @@ title="Print to PDF"
   </thead>
   <tbody>
     <tr>
-      <th>IU</th>
-      <td>34</td>
+      <th>Taylor Swift</th>
+      <td>24</td>
     </tr>
     <tr>
-      <th>Lee Mujin</th>
-      <td>3</td>
+      <th>Drake &amp; 21 Savage</th>
+      <td>10</td>
     </tr>
     <tr>
-      <th>Gaeko, Ourealgoat, SINCE, Ahn Byeong Woong, Tabber, Gwangil Jo Prod. CODE KUNST</th>
+      <th>Sam Smith &amp; Kim Petras</th>
       <td>1</td>
     </tr>
     <tr>
-      <th>aespa</th>
-      <td>3</td>
+      <th>Steve Lacy</th>
+      <td>1</td>
     </tr>
     <tr>
-      <th>sokodomo Feat. Zion.T, Wonstein, Prod. by Slom</th>
-      <td>1</td>
+      <th>Mariah Carey</th>
+      <td>5</td>
     </tr>
   </tbody>
 </table>
@@ -753,9 +886,9 @@ title="Print to PDF"
 <h2>💜 Kpop<a class="headerlink" href="#kpop" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">kpopTenYearChart</span> <span class="o">=</span> <span class="n">all_entries_last_10_years</span><span class="p">(</span><span class="s1">&#39;billboard-korea-100&#39;</span><span class="p">)</span>
-<span class="n">kpopArtistCountDF</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">get_artist_count</span><span class="p">(</span><span class="n">kpopTenYearChart</span><span class="p">),</span> <span class="n">orient</span><span class="o">=</span><span class="s1">&#39;index&#39;</span><span class="p">)</span>
-<span class="n">kpopArtistCountDF</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>kpopTenYearChart = all_entries_last_10_years(&#39;billboard-korea-100&#39;)
+kpopArtistCountDF = pd.DataFrame.from_dict(get_artist_count(kpopTenYearChart), orient=&#39;index&#39;)
+kpopArtistCountDF
 </pre></div>
 </div>
 </div>
@@ -783,23 +916,23 @@ title="Print to PDF"
   </thead>
   <tbody>
     <tr>
+      <th>sokodomo Feat. Zion.T, Wonstein, Prod. by Slom</th>
+      <td>1</td>
+    </tr>
+    <tr>
       <th>IU</th>
-      <td>34</td>
+      <td>32</td>
     </tr>
     <tr>
       <th>Lee Mujin</th>
       <td>3</td>
     </tr>
     <tr>
-      <th>Gaeko, Ourealgoat, SINCE, Ahn Byeong Woong, Tabber, Gwangil Jo Prod. CODE KUNST</th>
+      <th>BE'O Feat. MINO Prod. GRAY</th>
       <td>1</td>
     </tr>
     <tr>
-      <th>aespa</th>
-      <td>3</td>
-    </tr>
-    <tr>
-      <th>sokodomo Feat. Zion.T, Wonstein, Prod. by Slom</th>
+      <th>Gaeko, Ourealgoat, SINCE, Ahn Byeong Woong, Tabber, Gwangil Jo Prod. CODE KUNST</th>
       <td>1</td>
     </tr>
     <tr>
@@ -819,7 +952,7 @@ title="Print to PDF"
       <td>5</td>
     </tr>
     <tr>
-      <th>MONSTA X</th>
+      <th>Hwang In Wook (Prod. By Jeon Tae Ik)</th>
       <td>5</td>
     </tr>
     <tr>
@@ -828,12 +961,12 @@ title="Print to PDF"
     </tr>
   </tbody>
 </table>
-<p>166 rows × 1 columns</p>
+<p>180 rows × 1 columns</p>
 </div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">billboard</span><span class="o">.</span><span class="n">ChartData</span><span class="p">(</span><span class="s1">&#39;korea&#39;</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(billboard.ChartData(&#39;korea&#39;))
 </pre></div>
 </div>
 </div>

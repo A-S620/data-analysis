@@ -440,14 +440,14 @@ title="Print to PDF"
                 
   <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">from</span> <span class="nn">shared.DescriptiveStats</span> <span class="kn">import</span> <span class="n">create_stats</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>import pandas as pd
+from shared.DescriptiveStats import create_stats
 
-<span class="n">path</span> <span class="o">=</span> <span class="s1">&#39;../data/insurance.csv&#39;</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+path = &#39;../data/insurance.csv&#39;
+df = pd.read_csv(path)
 
-<span class="n">descriptiveData</span> <span class="o">=</span> <span class="p">{}</span>
-<span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+descriptiveData = {}
+df.info()
 </pre></div>
 </div>
 </div>
@@ -472,7 +472,7 @@ memory usage: 73.3+ KB
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>df.describe(include=&#39;all&#39;)
 </pre></div>
 </div>
 </div>
@@ -642,10 +642,10 @@ memory usage: 73.3+ KB
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">number_columns</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="s1">&#39;number&#39;</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">column</span> <span class="ow">in</span> <span class="n">number_columns</span><span class="p">:</span>
-    <span class="n">descriptiveData</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">create_stats</span><span class="p">(</span><span class="n">column</span><span class="p">,</span> <span class="n">df</span><span class="p">[</span><span class="n">column</span><span class="p">]))</span>
-<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">descriptiveData</span><span class="p">,</span> <span class="n">orient</span> <span class="o">=</span> <span class="s1">&#39;index&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>number_columns = df.select_dtypes(include=&#39;number&#39;)
+for column in number_columns:
+    descriptiveData.update(create_stats(column, df[column]))
+pd.DataFrame.from_dict(descriptiveData, orient = &#39;index&#39;)
 </pre></div>
 </div>
 </div>

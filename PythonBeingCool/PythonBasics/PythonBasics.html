@@ -487,12 +487,12 @@ title="Print to PDF"
 <h2>Variables<a class="headerlink" href="#variables" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-<span class="n">b</span> <span class="o">=</span> <span class="n">a</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="c1"># [1]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>a = [1]
+b = a
+print(b) # [1]
 
-<span class="n">b</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="c1"># [1,2]</span>
+b.append(2)
+print(a) # [1,2]
 </pre></div>
 </div>
 </div>
@@ -505,13 +505,14 @@ title="Print to PDF"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test</span> <span class="o">=</span> <span class="s2">&quot;Hello&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+test = &quot;Hello&quot;
 
-<span class="nb">print</span><span class="p">(</span><span class="n">test</span><span class="p">)</span>
+print(test)
 
-<span class="n">test</span> <span class="o">=</span> <span class="mi">123</span>
+test = 123
 
-<span class="nb">print</span><span class="p">(</span><span class="n">test</span><span class="p">)</span>
+print(test)
 </pre></div>
 </div>
 </div>
@@ -524,11 +525,11 @@ title="Print to PDF"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test</span> <span class="o">=</span> <span class="s2">&quot;3&quot;</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">test</span><span class="p">)</span> <span class="c1"># 3 IT IS CLASSED AS AN INT</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>test = &quot;3&quot;
+print(test) # 3 IT IS CLASSED AS AN INT
 
-<span class="n">test2</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="s2">&quot;3&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">test2</span><span class="p">)</span> <span class="c1"># 3 IT IS CLASSED AS A STRING</span>
+test2 = str(&quot;3&quot;)
+print(test2) # 3 IT IS CLASSED AS A STRING
 </pre></div>
 </div>
 </div>
@@ -544,10 +545,10 @@ title="Print to PDF"
 <h2>Data Structures<a class="headerlink" href="#data-structures" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nested_tuple</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">),(</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>nested_tuple = (1,2,3),(4,5,6)
 
-<span class="c1"># Cool loops</span>
-<span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">nested_tuple</span><span class="p">]</span>
+# Cool loops
+[x[1] for x in nested_tuple]
 </pre></div>
 </div>
 </div>
@@ -560,9 +561,9 @@ title="Print to PDF"
 <p>YOU CAN DO THE OBJECT ASSIGNING THINGY IN PYTHON</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">normal_tuple</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span>
-<span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span> <span class="o">=</span> <span class="n">normal_tuple</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>normal_tuple = 1,2,3
+a,b,c = normal_tuple
+print(a, b, c)
 </pre></div>
 </div>
 </div>
@@ -574,9 +575,9 @@ title="Print to PDF"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">this_is_a_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">])</span>
-<span class="n">this_is_a_list</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">])</span>
-<span class="n">this_is_a_list</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>this_is_a_list = list([1,2,3,4,5])
+this_is_a_list.extend([7,8,9])
+this_is_a_list
 </pre></div>
 </div>
 </div>
@@ -588,9 +589,9 @@ title="Print to PDF"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a_tuple</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
-<span class="n">tuple_into_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">a_tuple</span><span class="p">)</span>
-<span class="n">tuple_into_list</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>a_tuple = (1,2,3,4,5)
+tuple_into_list = list(a_tuple)
+tuple_into_list
 </pre></div>
 </div>
 </div>
@@ -602,27 +603,27 @@ title="Print to PDF"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">string</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;Like an echo in the forest</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>string = &quot;&quot;&quot;Like an echo in the forest
 
-<span class="s2">The day will come back around</span>
+The day will come back around
 
-<span class="s2">As if nothing happened</span>
+As if nothing happened
 
-<span class="s2">Yeah, life goes on</span>
+Yeah, life goes on
 
-<span class="s2">Like an arrow in the blue sky</span>
+Like an arrow in the blue sky
 
-<span class="s2">Another day flying by</span>
+Another day flying by
 
-<span class="s2">On my pillow, on my table</span>
+On my pillow, on my table
 
-<span class="s2">Yeah, life goes on</span>
+Yeah, life goes on
 
-<span class="s2">Like this again&quot;&quot;&quot;</span>
+Like this again&quot;&quot;&quot;
 
-<span class="n">string_as_list</span> <span class="o">=</span> <span class="n">string</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
-<span class="n">string_as_list</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="nb">len</span><span class="p">)</span>
-<span class="n">string_as_list</span>
+string_as_list = string.split()
+string_as_list.sort(key=len)
+string_as_list
 </pre></div>
 </div>
 </div>
@@ -680,10 +681,10 @@ title="Print to PDF"
 <h2>Loops<a class="headerlink" href="#loops" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
-    <span class="n">i</span> <span class="o">+=</span><span class="mi">1</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>i = 0
+while i &lt; 10:
+    print(i)
+    i +=1
 </pre></div>
 </div>
 </div>
@@ -704,9 +705,9 @@ title="Print to PDF"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a_list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;my&#39;</span><span class="p">,</span><span class="s1">&#39;stomach&#39;</span><span class="p">,</span><span class="s1">&#39;hurts&#39;</span><span class="p">]</span>
-<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">a_list</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>a_list = [&#39;my&#39;,&#39;stomach&#39;,&#39;hurts&#39;]
+for x in a_list:
+    print(x)
 </pre></div>
 </div>
 </div>
@@ -720,8 +721,8 @@ hurts
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">11</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>for x in range(0,11):
+    print(x)
 </pre></div>
 </div>
 </div>
@@ -746,10 +747,10 @@ hurts
 <h2>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">a_function</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;This function takes in the parameter &quot;</span> <span class="o">+</span> <span class="n">text</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>def a_function(text):
+    print(&quot;This function takes in the parameter &quot; + text)
 
-<span class="n">a_function</span><span class="p">(</span><span class="s2">&quot;meep&quot;</span><span class="p">)</span>
+a_function(&quot;meep&quot;)
 </pre></div>
 </div>
 </div>
@@ -764,25 +765,25 @@ hurts
 <h2>Files<a class="headerlink" href="#files" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;testfile.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="c1"># read</span>
-<span class="c1">#a - append</span>
-<span class="c1">#w - write</span>
-<span class="c1">#x - create new data file, if exists then error</span>
-<span class="c1">#t - text file</span>
-<span class="c1">#b - binary data</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>f = open(&quot;testfile.txt&quot;, &quot;r&quot;) # read
+#a - append
+#w - write
+#x - create new data file, if exists then error
+#t - text file
+#b - binary data
 
-<span class="n">data</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-<span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+data = f.read()
+f.close()
 
-<span class="n">words</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
-<span class="n">words</span>
+words = data.split(&quot; &quot;)
+words
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">13</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">13</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;testfile.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="c1"># read</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="c1">#a - append</span>
 <span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="c1">#w - write</span>

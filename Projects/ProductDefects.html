@@ -463,17 +463,17 @@ The template was provided by CodeAcademy.</p>
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">poisson</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="c1">## Histogram function</span>
-<span class="k">def</span> <span class="nf">histogram_function</span><span class="p">(</span><span class="n">rand_vars</span><span class="p">):</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">rand_vars</span><span class="p">,</span> <span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">rand_vars</span><span class="p">)))</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">edgecolor</span> <span class="o">=</span> <span class="s2">&quot;black&quot;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">rand_vars</span><span class="o">.</span><span class="n">max</span><span class="p">())))</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>from scipy.stats import poisson
+import matplotlib.pyplot as plt
+import numpy as np
+## Histogram function
+def histogram_function(rand_vars):
+    plt.hist(rand_vars, bins = np.arange(len(set(rand_vars)))-0.5, edgecolor = &quot;black&quot;)
+    plt.xticks(list(range(rand_vars.max())))
+    plt.show()
 
-<span class="c1">## Task 1:</span>
-<span class="n">lam</span> <span class="o">=</span> <span class="mi">7</span>
+## Task 1:
+lam = 7
 </pre></div>
 </div>
 </div>
@@ -485,8 +485,8 @@ The template was provided by CodeAcademy.</p>
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Task 2 - Observing lam defects in a given day</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">poisson</span><span class="o">.</span><span class="n">pmf</span><span class="p">(</span><span class="n">lam</span><span class="p">,</span><span class="n">lam</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## Task 2 - Observing lam defects in a given day
+print(poisson.pmf(lam,lam))
 </pre></div>
 </div>
 </div>
@@ -503,8 +503,8 @@ The template was provided by CodeAcademy.</p>
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Task 3 - Observing 4 or fewer defects in a given day</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">poisson</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">lam</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## Task 3 - Observing 4 or fewer defects in a given day
+print(poisson.cdf(4, lam))
 </pre></div>
 </div>
 </div>
@@ -521,8 +521,8 @@ The template was provided by CodeAcademy.</p>
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Task 4 - more than 9 defects on a given day</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">poisson</span><span class="o">.</span><span class="n">sf</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="n">lam</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## Task 4 - more than 9 defects on a given day
+print(poisson.sf(9, lam))
 </pre></div>
 </div>
 </div>
@@ -542,9 +542,9 @@ The template was provided by CodeAcademy.</p>
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Task 5 - random values in the Poisson Distribution</span>
-<span class="n">year_defects</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">poisson</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">lam</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">365</span><span class="p">))</span>
-<span class="n">histogram_function</span><span class="p">(</span><span class="n">year_defects</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## Task 5 - random values in the Poisson Distribution
+year_defects = np.array(poisson.rvs(lam, size=365))
+histogram_function(year_defects)
 </pre></div>
 </div>
 </div>
@@ -557,14 +557,14 @@ The template was provided by CodeAcademy.</p>
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Task 6: - First 20 values in dataset</span>
-<span class="n">year_defects</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span> <span class="mi">20</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## Task 6: - First 20 values in dataset
+year_defects[0: 20]
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 9,  8,  7,  7,  9,  7,  9,  5,  7,  5,  8, 12,  8,  6,  6,  6,  9,
-        8,  3,  7])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 5,  5,  8,  4,  6, 11,  7,  8,  7, 11,  3,  7,  6, 10,  5,  5,  5,
+       13,  7,  4])
 </pre></div>
 </div>
 </div>
@@ -576,8 +576,8 @@ The template was provided by CodeAcademy.</p>
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Task 7 - total number of defects in the year</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">lam</span> <span class="o">*</span><span class="mi">365</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## Task 7 - total number of defects in the year
+print(lam *365)
 </pre></div>
 </div>
 </div>
@@ -592,14 +592,14 @@ The template was provided by CodeAcademy.</p>
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Task 8 - total sum of dataset</span>
-<span class="nb">sum</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">year_defects</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="nb">sum</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## Task 8 - total sum of dataset
+sum = np.sum(year_defects)
+print(sum)
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2518
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2568
 </pre></div>
 </div>
 </div>
@@ -611,14 +611,14 @@ The template was provided by CodeAcademy.</p>
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Task 9 - average of simulated dataset</span>
-<span class="n">average</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">year_defects</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">average</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## Task 9 - average of simulated dataset
+average = np.mean(year_defects)
+print(average)
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6.898630136986301
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7.035616438356165
 </pre></div>
 </div>
 </div>
@@ -630,17 +630,14 @@ The template was provided by CodeAcademy.</p>
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Task 10 - highest number of days in a given day</span>
-<span class="n">maximum</span> <span class="o">=</span> <span class="n">year_defects</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">maximum</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## Task 10 - highest number of days in a given day
+maximum = year_defects.max()
+print(maximum)
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>15
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>18
 </pre></div>
 </div>
 </div>
@@ -652,13 +649,13 @@ The template was provided by CodeAcademy.</p>
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Task 11 - probability of observing maximum value or more</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">poisson</span><span class="o">.</span><span class="n">sf</span><span class="p">(</span><span class="n">maximum</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">lam</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## Task 11 - probability of observing maximum value or more
+print(poisson.sf(maximum-1, lam))
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.005717202492496008
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.000361784316602241
 </pre></div>
 </div>
 </div>
@@ -678,9 +675,9 @@ The template was provided by CodeAcademy.</p>
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Task 12:</span>
-<span class="n">ninteythPercentile</span> <span class="o">=</span> <span class="n">poisson</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">lam</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">ninteythPercentile</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## Task 12:
+ninteythPercentile = poisson.ppf(0.9, lam)
+print(ninteythPercentile)
 </pre></div>
 </div>
 </div>
@@ -702,14 +699,14 @@ The template was provided by CodeAcademy.</p>
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Task 13:</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>## Task 13:
 
-<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">year_defects</span> <span class="o">&gt;</span> <span class="n">poisson</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="mf">0.9</span><span class="p">,</span><span class="n">lam</span><span class="p">))</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">year_defects</span><span class="p">))</span>
+print(np.sum(year_defects &gt; poisson.ppf(0.9,lam))/len(year_defects))
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.10684931506849316
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.11232876712328767
 </pre></div>
 </div>
 </div>
